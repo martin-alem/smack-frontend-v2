@@ -6,7 +6,9 @@
   --color-secondary: #f5f7fb;
   --color-primary-text: #495561;
   --color-secondary-text: #495561;
+  --color-gray-text: #7E8AA0;
   --color-white: #FFFFFF;
+  --color-input-bg: #E6EBF5;
 }
 
 html {
