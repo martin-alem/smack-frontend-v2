@@ -1,0 +1,100 @@
+.Setup2FA {
+  width: 30%;
+  margin: 10rem auto;
+  padding: 1.4rem;
+}
+
+.Setup2FA-heading {
+  font-size: 5rem;
+  color: var(--color-secondary-text);
+  text-align: center;
+  margin: 0rem 0rem 3rem 0rem;
+}
+
+.Setup2FA-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 0rem 3rem 0rem;
+}
+
+.Setup2FA-message {
+  font-size: 1.7rem;
+  color: var(--color-secondary-text);
+  margin: 0rem 0rem 1.5rem 0rem;
+  text-align: center;
+}
+
+.Setup2FA-input {
+  width: 60%;
+  margin: 0rem auto 3rem auto;
+}
+
+.Setup2FA-button {
+  width: 60%;
+  margin: 0rem auto 3rem auto;
+}
+
+.Setup2FA-info {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.Setup2FA-info .icon {
+  color: var(--color-gray-text);
+}
+
+.Setup2FA-info-text {
+  font-size: 1.6rem;
+  color: var(--color-secondary-text);
+  font-size: bold;
+}
+
+@media only screen and (max-width: 768px), (max-width: 2218px) {
+  .Setup2FA {
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 411px),
+  (max-width: 360px),
+  (max-width: 414px),
+  (max-width: 540px) {
+  .Setup2FA {
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1.4rem;
+  }
+  .Setup2FA-input {
+    width: 100%;
+    margin: 0rem auto 3rem auto;
+  }
+
+  .Setup2FA-button {
+    width: 100%;
+    margin: 0rem auto 3rem auto;
+  }
+
+  .Setup2FA-info {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .Setup2FA-heading {
+    font-size: 3.5rem;
+    color: var(--color-secondary-text);
+    text-align: center;
+    margin: 0rem 0rem 3rem 0rem;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .Setup2FA-image {
+    width: 50%;
+  }
+}
