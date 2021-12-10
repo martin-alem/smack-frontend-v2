@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./../../logo/Logo";
+import Logo from "./../../components/logo/Logo";
 import GoogleLogin from "react-google-login";
 import "./Login.css";
 

@@ -2,9 +2,11 @@
 
 :root {
   --color-primary: #7269ef;
+  --color-primary-light: #857ee6;
   --color-secondary: #f5f7fb;
   --color-primary-text: #495561;
   --color-secondary-text: #495561;
+  --color-white: #FFFFFF;
 }
 
 html {
