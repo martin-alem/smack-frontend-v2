@@ -25,6 +25,7 @@ function Login() {
         responseType="token"
         cookiePolicy={"single_host_origin"}
       />
+      <p className="Login-tag">&copy;smack</p>
     </div>
   );
 }

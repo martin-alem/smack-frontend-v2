@@ -18,3 +18,9 @@
   font-size: 2rem;
   color: var(--color-secondary-text);
 }
+
+.Login-tag {
+  margin-top: 4rem;
+  color: var(--color-secondary-text);
+  font-size: 1.4rem;
+}
