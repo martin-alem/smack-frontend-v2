@@ -1,0 +1,108 @@
+.Verify {
+  width: 30%;
+  margin: 10rem auto;
+  padding: 1.4rem;
+}
+
+.Verify-heading {
+  font-size: 4rem;
+  color: var(--color-secondary-text);
+  text-align: center;
+  margin: 0rem 0rem 3rem 0rem;
+}
+
+.Verify-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 0rem 3rem 0rem;
+}
+
+.Verify-message {
+  font-size: 1.7rem;
+  color: var(--color-secondary-text);
+  margin: 0rem 0rem 1.5rem 0rem;
+  text-align: center;
+}
+
+.Verify-input {
+  width: 60%;
+  margin: 0rem auto 1rem auto;
+}
+
+.Verify-checkbox {
+  width: 60%;
+  margin: 0rem auto 2rem auto;
+}
+
+.Verify-button {
+  width: 60%;
+  margin: 0rem auto 3rem auto;
+}
+
+.Verify-info {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.Verify-info .icon {
+  color: var(--color-gray-text);
+}
+
+.Verify-info-text {
+  font-size: 1.6rem;
+  color: var(--color-secondary-text);
+  font-size: bold;
+}
+
+@media only screen and (max-width: 768px), (max-width: 2218px) {
+  .Verify {
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 411px),
+  (max-width: 360px),
+  (max-width: 414px),
+  (max-width: 540px) {
+  .Verify {
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1.4rem;
+  }
+  .Verify-input {
+    width: 100%;
+    margin: 0rem auto 1rem auto;
+  }
+  .Verify-checkbox {
+    width: 100%;
+    margin: 0rem auto 2rem auto;
+  }
+  .Verify-button {
+    width: 100%;
+    margin: 0rem auto 3rem auto;
+  }
+
+  .Verify-info {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .Verify-heading {
+    font-size: 3.5rem;
+    color: var(--color-secondary-text);
+    text-align: center;
+    margin: 0rem 0rem 3rem 0rem;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .Verify-image {
+    width: 50%;
+  }
+}
