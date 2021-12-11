@@ -6,9 +6,11 @@
   --color-secondary: #f5f7fb;
   --color-primary-text: #495561;
   --color-secondary-text: #495561;
-  --color-gray-text: #7E8AA0;
-  --color-white: #FFFFFF;
-  --color-input-bg: #E6EBF5;
+  --color-gray-text: #7e8aa0;
+  --color-white: #ffffff;
+  --color-input-bg: #e6ebf5;
+  --color-error: #c92432;
+  --color-error-light: #fffafa;
 }
 
 html {

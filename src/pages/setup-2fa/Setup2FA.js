@@ -15,6 +15,7 @@ function Setup2FA() {
       <p className="Setup2FA-message">Enter the code sent the phone number ending in ***5041</p>
       <div className="Setup2FA-input">
         <TextInput
+          error={false}
           name="code"
           placeholder="Verification code"
           action={() => {
