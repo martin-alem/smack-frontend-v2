@@ -2,6 +2,7 @@ import React from "react";
 import "./Setup2FA.css";
 import Button from "./../../components/button/Button";
 import TextInput from "./../../components/text-input/TextInput";
+import CheckBox from "./../../components/check_box/CheckBox";
 import image from "./../../images/2fa.svg";
 
 function Setup2FA() {
@@ -18,6 +19,15 @@ function Setup2FA() {
           placeholder="Verification code"
           action={() => {
             console.log("Hi there!");
+          }}
+        />
+      </div>
+      <div className="Setup2FA-checkbox">
+        <CheckBox
+          name="trusted_device"
+          label="Add this device as trusted device"
+          action={e => {
+            console.log(e.target.checked);
           }}
         />
       </div>

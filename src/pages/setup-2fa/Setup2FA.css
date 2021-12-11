@@ -28,7 +28,12 @@
 
 .Setup2FA-input {
   width: 60%;
-  margin: 0rem auto 3rem auto;
+  margin: 0rem auto 1rem auto;
+}
+
+.Setup2FA-checkbox {
+  width: 60%;
+  margin: 0rem auto 2rem auto;
 }
 
 .Setup2FA-button {
@@ -70,9 +75,12 @@
   }
   .Setup2FA-input {
     width: 100%;
-    margin: 0rem auto 3rem auto;
+    margin: 0rem auto 1rem auto;
   }
-
+  .Setup2FA-checkbox {
+    width: 100%;
+    margin: 0rem auto 2rem auto;
+  }
   .Setup2FA-button {
     width: 100%;
     margin: 0rem auto 3rem auto;
