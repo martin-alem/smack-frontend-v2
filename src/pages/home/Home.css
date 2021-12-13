@@ -27,13 +27,12 @@
 .Home-chats {
   grid-area: LNV;
   height: 100%;
-  background-color: blue;
 }
 
 .Home-chat-area {
   grid-area: CHT;
   height: 100%;
-  background-color: aquamarine;
+  background-color: var(--color-white);
 }
 
 @media only screen and (max-width: 1705px) {
