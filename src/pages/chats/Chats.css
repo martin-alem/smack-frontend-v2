@@ -9,3 +9,7 @@
   font-weight: bolder;
   color: var(--color-secondary-text);
 }
+
+.Chats-online-friends{
+    position: relative;
+}

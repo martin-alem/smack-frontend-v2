@@ -1,0 +1,47 @@
+.UserImage {
+  position: relative;
+  cursor: pointer;
+}
+
+.UserImage-image-small {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.UserImage-image-medium {
+  width: 5rem;
+  height: 5rem;
+}
+
+.UserImage-image-large {
+  width: 10rem;
+  height: 10rem;
+}
+
+.UserImage-image {
+  border: 2px solid var(--color-input-bg);
+  border-radius: 50%;
+}
+
+.UserImage-status {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 7rem;
+  left: 8.2rem;
+}
+
+.online {
+  border: 2px solid var(--color-input-bg);
+  background-color: var(--color-online-status);
+}
+
+.busy {
+  border: 2px solid var(--color-input-bg);
+  background-color: var(--color-busy-status);
+}
+
+.offline {
+  display: none;
+}

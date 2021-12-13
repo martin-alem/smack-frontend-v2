@@ -7,7 +7,7 @@ function SearchInput(props) {
   return (
     <div className="SearchInput">
       <input type="search" name={name} placeholder={placeholder} className="SearchInput-input" />
-      <span class="material-icons-outlined">search</span>
+      <span className="material-icons-outlined">search</span>
     </div>
   );
 }
