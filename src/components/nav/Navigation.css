@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.setting-icon {
+  display: none !important;
+}
+
 .Navigation-icon {
   width: 100%;
   height: 100%;
@@ -43,4 +47,37 @@
 
 .active .material-icons-outlined {
   color: var(--color-primary);
+}
+
+@media only screen and (max-width: 1280px) {
+  .Navigation-logo {
+    display: none;
+  }
+  .Navigation {
+    width: 100%;
+    height: 100%;
+    padding: 0rem 0rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-white);
+  }
+
+  .Navigation-links {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Navigation-setting {
+    display: none;
+  }
+
+  .setting-icon {
+    display: block !important;
+  }
 }

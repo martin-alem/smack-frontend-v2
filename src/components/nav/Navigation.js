@@ -39,6 +39,10 @@ function Navigation() {
             notifications
           </span>
         </div>
+
+        <div className="Navigation-icon setting-icon">
+          <UserProfile />
+        </div>
       </div>
       <div className="Navigation-setting">
         <UserProfile />
