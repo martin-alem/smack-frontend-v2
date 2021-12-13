@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: 4% repeat(11, auto);
+  grid-template-columns: 3% repeat(11, auto);
   grid-template-rows: repeat(12, 1fr);
   grid-template-areas:
     "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
@@ -22,7 +22,6 @@
 .Home-nav {
   grid-area: Nav;
   height: 100%;
-  background: red;
 }
 
 .Home-chats {
