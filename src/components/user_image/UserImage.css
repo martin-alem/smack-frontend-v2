@@ -14,8 +14,8 @@
 }
 
 .UserImage-image-large {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
 }
 
 .UserImage-image {
@@ -28,8 +28,8 @@
   height: 1.5rem;
   border-radius: 50%;
   position: absolute;
-  top: 7rem;
-  left: 8.2rem;
+  top: 5rem;
+  left: 6.5rem;
 }
 
 .online {
