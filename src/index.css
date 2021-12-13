@@ -31,3 +31,8 @@ body {
   min-height: 100%;
   background-color: var(--color-secondary);
 }
+
+.hide {
+  display: none;
+  opacity: 0;
+}

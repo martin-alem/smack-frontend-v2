@@ -1,0 +1,83 @@
+.Home {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4% repeat(11, auto);
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-areas:
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+    "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT";
+}
+
+.Home-nav {
+  grid-area: Nav;
+  height: 100%;
+  background: red;
+}
+
+.Home-chats {
+  grid-area: LNV;
+  height: 100%;
+  background-color: blue;
+}
+
+.Home-chat-area {
+  grid-area: CHT;
+  height: 100%;
+  background-color: aquamarine;
+}
+
+@media only screen and (max-width: 1705px) {
+  .Home {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 6% 20% repeat(10, auto);
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-areas:
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT"
+      "Nav   LNV   LNV   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT   CHT";
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .Home {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(11, 1fr) 10%;
+    grid-template-areas:
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
+      "Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav";
+  }
+}
