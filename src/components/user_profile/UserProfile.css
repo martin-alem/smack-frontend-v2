@@ -1,0 +1,42 @@
+.UserProfile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.UserProfile .profile {
+  border: 2px solid var(--color-input-bg);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.UserProfile-context-menu {
+  position: absolute;
+  width: 15rem;
+  top: -14rem;
+  left: 1rem;
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px;
+}
+
+.UserProfile-context {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-secondary-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+
+.UserProfile-context:hover {
+  width: 100%;
+  background-color: var(--color-input-bg);
+}

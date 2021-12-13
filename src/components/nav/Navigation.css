@@ -37,11 +37,6 @@
   cursor: pointer;
 }
 
-.Navigation-setting .profile {
-  border: 2px solid var(--color-input-bg);
-  border-radius: 50%;
-  cursor: pointer;
-}
 .active {
   background-color: var(--color-bg-active);
 }

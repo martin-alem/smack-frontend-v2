@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navigation.css";
 import Logo from "./../logo/Logo";
-import Profile from "./../../images/user.jpg";
+import UserProfile from "./../../components/user_profile/UserProfile";
 
 function Navigation() {
   return (
@@ -41,7 +41,7 @@ function Navigation() {
         </div>
       </div>
       <div className="Navigation-setting">
-        <img className="profile" src={Profile} alt="User profile" width="50px" height="50px" />
+        <UserProfile />
       </div>
     </div>
   );
