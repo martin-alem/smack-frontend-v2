@@ -2,6 +2,7 @@ import React from "react";
 import "./Profile.css";
 import Image from "./../../images/user.jpg";
 import Accordion from "./../../components/accordion/Accordion";
+import Media from "./../../components/media/Media";
 
 function Profile() {
   return (
@@ -54,7 +55,15 @@ function Profile() {
         </Accordion>
 
         <Accordion name="personal-info" title="Attached Files" icon="attachment" type="attachment">
-          <div className="Profile-content"></div>
+          <div className="Profile-content">
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media name="Image1.jpg" icon="image" size="34" />
+          </div>
         </Accordion>
       </div>
     </div>

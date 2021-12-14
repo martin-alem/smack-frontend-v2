@@ -1,0 +1,28 @@
+.Media {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--color-input-bg);
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.Media-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.Media-info-name h4 {
+  font-size: 1.5rem;
+  color: var(--color-primary-text);
+}
+
+.Media-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
