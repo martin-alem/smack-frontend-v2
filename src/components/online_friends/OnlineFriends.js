@@ -4,7 +4,17 @@ import UserImage from "./../../components/user_image/UserImage";
 import Image from "./../../images/user.jpg";
 
 function OnlineFriends() {
-  const onlineFriends = ["busy", "online", "busy"];
+  const onlineFriends = [
+    "busy",
+    "online",
+    "busy",
+    "busy",
+    "online",
+    "busy",
+    "busy",
+    "online",
+    "busy",
+  ];
   return (
     <div className="OnlineFriends">
       {onlineFriends.map((onlineFriend, index) => (

@@ -20,6 +20,10 @@
   align-items: center;
 }
 
+.Profile-personal-info {
+  margin-top: 4rem;
+}
+
 .Profile-image {
   width: 25rem;
   height: 25rem;

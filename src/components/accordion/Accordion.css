@@ -34,6 +34,7 @@
 .Accordion-content {
   width: 100%;
   display: none;
+  transition: display 0.16s;
 }
 
 .Accordion-input:checked ~ .Accordion-content {

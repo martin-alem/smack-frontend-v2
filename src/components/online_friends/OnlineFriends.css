@@ -11,7 +11,7 @@
 
 /* width */
 .OnlineFriends::-webkit-scrollbar {
-  width: 2px;
+  width: 0px;
 }
 
 /* Track */
