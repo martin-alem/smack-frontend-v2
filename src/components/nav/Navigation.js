@@ -37,7 +37,13 @@ function Navigation(props) {
         </div>
 
         <div className="Navigation-icon friends-icon">
-          <span className="material-icons-outlined" title="friends">
+          <span
+            onClick={() => {
+              setPage("friends");
+            }}
+            className="material-icons-outlined"
+            title="friends"
+          >
             people_alt
           </span>
         </div>

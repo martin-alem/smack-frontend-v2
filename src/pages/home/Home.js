@@ -3,6 +3,7 @@ import "./Home.css";
 import Navigation from "./../../components/nav/Navigation";
 import Chats from "./../../pages/chats/Chats";
 import Profile from "./../../pages/profile/Profile";
+import Friends from "../../pages/friends/Friends";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -11,6 +12,8 @@ function Home() {
       return <Chats />;
     } else if (arg === "profile") {
       return <Profile />;
+    } else if (arg === "friends") {
+      return <Friends />;
     } else {
       return <Chats />;
     }

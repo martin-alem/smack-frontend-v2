@@ -1,0 +1,23 @@
+.Friend {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.Friend-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Friend-details h4 {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+}
+
+.Friend-details p {
+  color: var(--color-primary-text);
+}

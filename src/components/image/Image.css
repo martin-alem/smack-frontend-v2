@@ -1,0 +1,4 @@
+.Image img {
+  border: 2px solid var(--color-input-bg);
+  border-radius: 50%;
+}

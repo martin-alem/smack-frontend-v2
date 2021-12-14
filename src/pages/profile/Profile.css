@@ -69,13 +69,18 @@
 }
 
 .Profile-about-content,
-.Profile-story-content {
+.Profile-story-content,
+.Profile-media-content {
   width: 100%;
 }
 
 .Profile-story-content p {
   font-size: 1.5rem;
   color: var(--color-primary-text);
+}
+
+.Profile-media-content {
+  overflow-y: auto;
 }
 
 .Profile-firstName,
@@ -107,21 +112,7 @@
 }
 
 /* width */
-.Profile::-webkit-scrollbar {
+.Profile::-webkit-scrollbar,
+.Profile-media-content::-webkit-scrollbar {
   width: 0px;
-}
-
-/* Track */
-.Profile::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-.Profile::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-.Profile::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }

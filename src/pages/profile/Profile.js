@@ -64,7 +64,7 @@ function Profile() {
         </Accordion>
 
         <Accordion name="personal-info" title="Attached Files" icon="attachment" type="attachment">
-          <div className="Profile-content">
+          <div className="Profile-media-content">
             <Media name="Image1.jpg" icon="image" size="34" />
             <Media name="Image1.jpg" icon="image" size="34" />
             <Media name="Image1.jpg" icon="image" size="34" />
