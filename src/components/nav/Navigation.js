@@ -3,7 +3,9 @@ import "./Navigation.css";
 import Logo from "./../logo/Logo";
 import UserProfile from "./../../components/user_profile/UserProfile";
 
-function Navigation() {
+function Navigation(props) {
+  const { setPage } = props;
+
   return (
     <div className="Navigation">
       <div className="Navigation-logo">
@@ -11,13 +13,25 @@ function Navigation() {
       </div>
       <div className="Navigation-links">
         <div className="Navigation-icon chat-icon active">
-          <span className="material-icons-outlined" title="chat">
+          <span
+            onClick={() => {
+              setPage("chats");
+            }}
+            className="material-icons-outlined"
+            title="chat"
+          >
             sms
           </span>
         </div>
 
         <div className="Navigation-icon person-icon">
-          <span className="material-icons-outlined" title="profile">
+          <span
+            onClick={() => {
+              setPage("profile");
+            }}
+            className="material-icons-outlined"
+            title="profile"
+          >
             person
           </span>
         </div>

@@ -1,0 +1,116 @@
+.Profile {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.Profile-heading {
+  font-size: 4rem;
+  font-weight: bolder;
+  color: var(--color-secondary-text);
+}
+
+.Profile-photo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Profile-image {
+  width: 25rem;
+  height: 25rem;
+  border: 2px solid var(--color-input-bg);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.Profile-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Profile-info h3 {
+  font-size: 2rem;
+  color: var(--color-secondary-text);
+  text-transform: capitalize;
+}
+
+.Profile-online {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-online-status);
+}
+
+.Profile-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.Profile-about-content,
+.Profile-story-content {
+  width: 100%;
+}
+
+.Profile-story-content p {
+  font-size: 1.5rem;
+  color: var(--color-primary-text);
+}
+
+.Profile-firstName,
+.Profile-lastName,
+.Profile-email,
+.Profile-phone,
+.Profile-friends {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.Profile-firstName p,
+.Profile-lastName p,
+.Profile-email p,
+.Profile-phone p,
+.Profile-friends p {
+  font-size: 1.5rem;
+  color: var(--color-secondary-text);
+}
+
+.Profile-firstName,
+.Profile-lastName,
+.Profile-email,
+.Profile-phone,
+.Profile-friends h4 {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+  text-transform: capitalize;
+}
+
+/* width */
+.Profile::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+.Profile::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.Profile::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.Profile::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

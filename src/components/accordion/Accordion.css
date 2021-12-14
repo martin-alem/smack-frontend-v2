@@ -1,0 +1,41 @@
+.Accordion {
+  max-width: 400px;
+  margin: 0.5rem auto;
+  border: 2px solid var(--color-input-bg);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+}
+
+.Accordion-label,
+.Accordion-content {
+  padding: 14px 20px;
+}
+
+.Accordion-label {
+  width: 100%;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  display: block;
+  color: var(--color-primary-text);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Accordion-label > :last-child {
+  margin-left: auto;
+}
+
+.Accordion-input,
+.Accordion-content {
+  width: 100%;
+  display: none;
+}
+
+.Accordion-input:checked ~ .Accordion-content {
+  display: block;
+}
