@@ -1,0 +1,32 @@
+.More {
+  position: relative;
+  cursor: pointer;
+}
+
+.More > :first-child {
+  color: var(--color-gray-text);
+}
+
+.More-content {
+  position: absolute;
+  width: 200px;
+  background-color: var(--color-white);
+  box-shadow: 4px 4px 5px;
+  top: 0rem;
+  left: -20rem;
+}
+
+.More-item {
+  color: var(--color-gray-text);
+  font-size: 1.6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.5s;
+}
+
+.More-item:hover {
+  background-color: var(--color-input-bg);
+}

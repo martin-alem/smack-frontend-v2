@@ -15,7 +15,6 @@ function Media(props) {
       </div>
       <div className="Media-action">
         <span className="material-icons-outlined">file_download</span>
-        <span className="material-icons-outlined">more_vert</span>
       </div>
     </div>
   );

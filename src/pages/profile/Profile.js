@@ -3,11 +3,20 @@ import "./Profile.css";
 import Image from "./../../images/user.jpg";
 import Accordion from "./../../components/accordion/Accordion";
 import Media from "./../../components/media/Media";
+import More from "../../components/more/More";
 
 function Profile() {
   return (
     <div className="Profile">
-      <div className="Profile-heading">Profile</div>
+      <div className="Profile-heading">
+        <h4>Profile</h4>
+        <More
+          contents={[
+            { text: "Logout", icon: "logout" },
+            { text: "Delete Account", icon: "remove_circle_outline" },
+          ]}
+        />
+      </div>
       <div className="Profile-photo">
         <img className="Profile-image" src={Image} alt="user profile" />
         <div className="Profile-info">

@@ -8,6 +8,13 @@
 }
 
 .Profile-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Profile-heading h4 {
   font-size: 4rem;
   font-weight: bolder;
   color: var(--color-secondary-text);
