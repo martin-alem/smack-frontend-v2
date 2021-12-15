@@ -80,6 +80,7 @@
 }
 
 .Profile-media-content {
+  height: 400px;
   overflow-y: auto;
 }
 

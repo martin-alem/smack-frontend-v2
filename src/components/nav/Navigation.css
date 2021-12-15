@@ -18,7 +18,7 @@
   justify-content: space-evenly;
 }
 
-.Navigation-icon .material-icons-outlined {
+.Navigation-icon > :first-child {
   width: 100%;
   display: flex;
   justify-content: center;

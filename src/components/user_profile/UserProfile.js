@@ -11,7 +11,7 @@ function UserProfile(props) {
   return (
     <div className="UserProfile">
       <div ref={contextMenu} className="UserProfile-context-menu hide">
-        <div className="UserProfile-context">
+        <div onClick={() => setPage("profile")} className="UserProfile-context">
           <span className="profile-text">Profile</span>
           <span className="material-icons-outlined">badge</span>
         </div>
