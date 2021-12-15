@@ -1,0 +1,35 @@
+.ToggleSwitch-input {
+  display: none;
+}
+
+.ToggleSwitch-switch {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+  border-radius: 10px;
+  background-color: var(--color-gray-text);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ToggleSwitch-input:checked ~ .ToggleSwitch-switch {
+  background-color: var(--color-primary);
+}
+
+.ToggleSwitch-switch::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-white);
+  box-shadow: 0 0 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ToggleSwitch-input:checked ~ .ToggleSwitch-switch::after {
+  transform: translateX(2rem);
+}

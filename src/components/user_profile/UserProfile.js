@@ -2,11 +2,12 @@ import React from "react";
 import "./UserProfile.css";
 import Profile from "./../../images/user.jpg";
 
-function UserProfile() {
+function UserProfile(props) {
   const contextMenu = React.useRef();
   const toggleContextMenu = () => {
     contextMenu.current.classList.toggle("hide");
   };
+  const { setPage } = props;
   return (
     <div className="UserProfile">
       <div ref={contextMenu} className="UserProfile-context-menu hide">
@@ -14,7 +15,7 @@ function UserProfile() {
           <span className="profile-text">Profile</span>
           <span className="material-icons-outlined">badge</span>
         </div>
-        <div className="UserProfile-context">
+        <div onClick={() => setPage("settings")} className="UserProfile-context">
           <span className="profile-text">Settings</span>
           <span className="material-icons-outlined">settings</span>
         </div>

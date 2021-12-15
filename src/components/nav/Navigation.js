@@ -73,11 +73,11 @@ function Navigation(props) {
         </div>
 
         <div className="Navigation-icon setting-icon">
-          <UserProfile />
+          <UserProfile setPage={setPage} />
         </div>
       </div>
       <div className="Navigation-setting">
-        <UserProfile />
+        <UserProfile setPage={setPage} />
       </div>
     </div>
   );

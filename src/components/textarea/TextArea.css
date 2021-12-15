@@ -1,0 +1,22 @@
+.TextArea {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.TextArea-textarea {
+  width: 100%;
+  height: 10rem;
+  padding: 2rem;
+  outline: none;
+  border: 2px solid var(--color-primary-text);
+  background-color: var(--color-input-bg);
+  padding: 1.7rem;
+  border-radius: 5px;
+  resize: none;
+}
+
+.TextArea-textarea::placeholder {
+  color: var(--color-gray-text);
+  font-size: 1.9rem;
+  font-weight: bolder;
+}

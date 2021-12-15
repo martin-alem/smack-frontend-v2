@@ -1,0 +1,25 @@
+.ImageUpload {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.ImageUpload-image {
+  border: 2px solid var(--color-input-bg);
+  border-radius: 50%;
+}
+
+.ImageUpload-input {
+  display: none;
+}
+
+.ImageUpload-upload-icon {
+  font-size: 3rem;
+  color: var(--color-secondary-text);
+  position: absolute;
+  top: 20rem;
+  left: 26rem;
+  cursor: pointer;
+}

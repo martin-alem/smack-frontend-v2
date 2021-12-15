@@ -6,6 +6,7 @@ import Profile from "./../../pages/profile/Profile";
 import Friends from "../../pages/friends/Friends";
 import FindFriend from "../find_friend/FindFriend";
 import Notifications from "../notifications/Notifications";
+import Settings from "../settings/Settings";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -20,6 +21,8 @@ function Home() {
       return <FindFriend />;
     } else if (arg === "notifications") {
       return <Notifications />;
+    } else if (arg === "settings") {
+      return <Settings />;
     } else {
       return <Chats />;
     }

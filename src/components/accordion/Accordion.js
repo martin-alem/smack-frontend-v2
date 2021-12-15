@@ -6,7 +6,7 @@ function Accordion(props) {
 
   return (
     <div className="Accordion">
-      <input type="radio" name={name} className="Accordion-input" id={type} />
+      <input type="checkbox" name={name} className="Accordion-input" id={type} />
       <label className="Accordion-label" htmlFor={type}>
         <span className="material-icons-outlined">{icon}</span>
         <p className="Accordion-title">{title}</p>
