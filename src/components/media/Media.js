@@ -7,7 +7,7 @@ function Media(props) {
   return (
     <div className="Media">
       <div className="Media-info">
-        <span class="material-icons-outlined">{icon}</span>
+        <span className="material-icons-outlined">{icon}</span>
         <div className="Media-info-name">
           <h4>{name}</h4>
           <h4>{size} MB</h4>

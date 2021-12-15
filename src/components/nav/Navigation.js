@@ -49,13 +49,25 @@ function Navigation(props) {
         </div>
 
         <div className="Navigation-icon search-icon">
-          <span className="material-icons-outlined" title="find friends">
+          <span
+            onClick={() => {
+              setPage("find_friends");
+            }}
+            className="material-icons-outlined"
+            title="find friends"
+          >
             person_search
           </span>
         </div>
 
         <div className="Navigation-icon notification-icon">
-          <span className="material-icons-outlined" title="notifications">
+          <span
+            onClick={() => {
+              setPage("notifications");
+            }}
+            className="material-icons-outlined"
+            title="notifications"
+          >
             notifications
           </span>
         </div>

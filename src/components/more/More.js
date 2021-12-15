@@ -9,7 +9,7 @@ function More(props) {
   };
   return (
     <div className="More">
-      <span onClick={toggleMore} class="material-icons-outlined">
+      <span onClick={toggleMore} className="material-icons-outlined">
         more_vert
       </span>
       <div ref={moreRef} className="More-content hide">
@@ -17,7 +17,7 @@ function More(props) {
           return (
             <div key={index} className="More-item">
               <p className="More-item-text">{content.text}</p>
-              <span class="material-icons-outlined">{content.icon}</span>
+              <span className="material-icons-outlined">{content.icon}</span>
             </div>
           );
         })}

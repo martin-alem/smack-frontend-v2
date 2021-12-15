@@ -1,0 +1,77 @@
+.Notification {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.Notification-sender {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Notification-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Notification-details h4 {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+}
+
+.Notification-details p {
+  color: var(--color-primary-text);
+  font-weight: bold;
+}
+
+.Notification-success {
+  color: var(--color-online-status);
+}
+
+.Notification-fail {
+  color: var(--color-error);
+}
+
+.Notification-message h4 {
+  font-weight: bolder;
+  font-size: 2rem;
+  color: var(--color-secondary-text);
+  margin-bottom: 0.5rem;
+}
+
+.Notification-message p {
+  font-size: 1.4rem;
+  color: var(--color-primary-text);
+  margin-bottom: 0.5rem;
+}
+
+.Notification-read {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--color-busy-status);
+  border-radius: 50%;
+}
+
+.Notification-time {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.Notification-time p {
+  font-size: 1.4rem;
+  color: var(--color-secondary-text);
+}
+
+.Notification-action {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 1rem;
+}

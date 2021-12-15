@@ -1,0 +1,9 @@
+.HorizontalRule {
+  width: 100%;
+}
+
+.HorizontalRule-rule {
+  border: none;
+  height: 0.05rem;
+  background-color: lightgray;
+}
