@@ -5,7 +5,8 @@ import OnlineFriends from "./../../components/online_friends/OnlineFriends";
 import Image from "./../../images/user.jpg";
 import Chat from "./../../components/chat/Chat";
 
-function Chats() {
+function Chats(props) {
+  const { showChatArea } = props;
   const chats = [
     {
       image: Image,
@@ -83,7 +84,7 @@ function Chats() {
       </div>
 
       <div className="Chats-heading2">Recent</div>
-      <div className="Chats-recent">
+      <div onClick={showChatArea} className="Chats-recent">
         {chats.map((chat, index) => (
           <Chat
             Image={chat.image}

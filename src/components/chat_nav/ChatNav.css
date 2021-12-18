@@ -40,3 +40,15 @@
   color: var(--color-gray-text);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 1280px) {
+  .ChatNav-left .material-icons-outlined {
+    display: block;
+  }
+
+  .ChatNav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}

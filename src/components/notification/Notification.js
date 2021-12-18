@@ -45,7 +45,6 @@ function Notification(props) {
         <p>{date}</p>
         {!read ? <div className="Notification-read"></div> : null}
       </div>
-      <HorizontalRule />
     </div>
   );
 }

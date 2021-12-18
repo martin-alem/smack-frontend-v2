@@ -24,7 +24,7 @@ function ImageUpload() {
         name="image"
         accept="image/jpeg, image/png"
       />
-      <span onClick={selectedImage} class="material-icons-outlined ImageUpload-upload-icon">
+      <span onClick={selectedImage} className="material-icons-outlined ImageUpload-upload-icon">
         add_a_photo
       </span>
     </div>

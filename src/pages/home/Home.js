@@ -11,9 +11,14 @@ import ChatArea from "../chat_area/ChatArea";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
+  const chatAreaRef = React.useRef();
+  const showChatArea = () => {
+    chatAreaRef.current.style.display = "block";
+    chatAreaRef.current.style.left = "0";
+  };
   const renderPage = arg => {
     if (arg === "chats") {
-      return <Chats />;
+      return <Chats showChatArea={showChatArea} />;
     } else if (arg === "profile") {
       return <Profile />;
     } else if (arg === "friends") {
@@ -25,7 +30,7 @@ function Home() {
     } else if (arg === "settings") {
       return <Settings />;
     } else {
-      return <Chats />;
+      return <Chats showChatArea={showChatArea} />;
     }
   };
   return (
@@ -34,8 +39,8 @@ function Home() {
         <Navigation setPage={setPage} />
       </nav>
       <section className="Home-chats">{renderPage(currentPage)}</section>
-      <section className="Home-chat-area">
-        <ChatArea />
+      <section ref={chatAreaRef} className="Home-chat-area">
+        <ChatArea chatAreaRef={chatAreaRef} />
       </section>
     </div>
   );

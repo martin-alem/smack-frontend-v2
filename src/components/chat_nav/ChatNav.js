@@ -5,17 +5,24 @@ import Image from "./../../components/image/Image";
 import More from "./../../components/more/More";
 
 function ChatNav(props) {
+  const { chatAreaRef } = props;
   const contents = [
     { text: "Profile", icon: "person" },
     { text: "Archive", icon: "archive" },
     { text: "Mute", icon: "volume_off" },
     { text: "Delete", icon: "delete" },
   ];
+
+  const hideChatArea = () => {
+    chatAreaRef.current.removeAttribute("style");
+  };
   return (
     <>
       <div className="ChatNav">
         <div className="ChatNav-left">
-          <span className="material-icons-outlined">chevron_left</span>
+          <span onClick={hideChatArea} className="material-icons-outlined">
+            chevron_left
+          </span>
           <div className="ChatNav-user-info">
             <Image src={image} alt="Image" dimension="50px" />
             <h4>Martin Alemajoh</h4>
