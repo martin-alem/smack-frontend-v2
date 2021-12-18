@@ -78,4 +78,13 @@
       "LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV   LNV"
       "Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav   Nav";
   }
+
+  .Home-chat-area {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
 }

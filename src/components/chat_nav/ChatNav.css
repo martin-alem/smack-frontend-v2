@@ -1,0 +1,42 @@
+.ChatNav {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.ChatNav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ChatNav-right {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.ChatNav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ChatNav-left .material-icons-outlined {
+  color: var(--color-gray-text);
+  cursor: pointer;
+  display: none;
+}
+
+.ChatNav-user-info h4 {
+  font-size: 1.5em;
+  color: var(--color-primary-text);
+}
+
+.ChatNav-right .material-icons-outlined {
+  color: var(--color-gray-text);
+  cursor: pointer;
+}

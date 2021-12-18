@@ -7,6 +7,7 @@ import Friends from "../../pages/friends/Friends";
 import FindFriend from "../find_friend/FindFriend";
 import Notifications from "../notifications/Notifications";
 import Settings from "../settings/Settings";
+import ChatArea from "../chat_area/ChatArea";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -33,7 +34,9 @@ function Home() {
         <Navigation setPage={setPage} />
       </nav>
       <section className="Home-chats">{renderPage(currentPage)}</section>
-      <section className="Home-chat-area"></section>
+      <section className="Home-chat-area">
+        <ChatArea />
+      </section>
     </div>
   );
 }
