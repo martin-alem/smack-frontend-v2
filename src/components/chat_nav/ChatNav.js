@@ -1,10 +1,13 @@
 import React from "react";
 import "./ChatNav.css";
+import { ModalContext } from "./../../context/modalContext";
 import image from "./../../images/user.jpg";
 import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
 
 function ChatNav(props) {
+  const modalContext = React.useContext(ModalContext);
+  const { showProfile, setShowProfile } = modalContext;
   const { chatAreaRef } = props;
   const contents = [
     { text: "Profile", icon: "person" },
@@ -23,7 +26,7 @@ function ChatNav(props) {
           <span onClick={hideChatArea} className="material-icons-outlined">
             chevron_left
           </span>
-          <div className="ChatNav-user-info">
+          <div onClick={() => setShowProfile(!showProfile)} className="ChatNav-user-info">
             <UserImage src={image} alt="Image" size="xs" showStatus={true} status="online" />
             <h4>Martin Alemajoh</h4>
           </div>

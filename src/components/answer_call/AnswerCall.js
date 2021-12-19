@@ -15,10 +15,10 @@ function AnswerCall(props) {
         <p>Martin Wants to start a call with you</p>
         <div className="AnswerCall-action">
           <button type="button" className="AnswerCall-answer">
-            <span class="material-icons-outlined">{callType}</span>
+            <span className="material-icons-outlined">{callType}</span>
           </button>
           <button type="button" className="AnswerCall-reject">
-            <span class="material-icons-outlined">close</span>
+            <span className="material-icons-outlined">close</span>
           </button>
         </div>
       </div>

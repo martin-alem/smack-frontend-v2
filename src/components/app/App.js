@@ -1,4 +1,5 @@
 import React from "react";
+import { ModalContextProvider } from "./../../context/modalContext";
 import Login from "../../pages/login/Login";
 import Setup2FA from "../../pages/setup-2fa/Setup2FA";
 import Verify from "../../pages/verify/Verify";
@@ -7,12 +8,14 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-      {/* <Login /> */}
-      {/* <Setup2FA /> */}
-      {/* <Verify /> */}
-    </div>
+    <ModalContextProvider>
+      <div className="App">
+        <Home />
+        {/* <Login /> */}
+        {/* <Setup2FA /> */}
+        {/* <Verify /> */}
+      </div>
+    </ModalContextProvider>
   );
 }
 

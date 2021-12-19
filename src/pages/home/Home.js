@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { ModalContext } from "./../../context/modalContext";
 import Navigation from "./../../components/nav/Navigation";
 import Chats from "./../../pages/chats/Chats";
 import Profile from "./../../pages/profile/Profile";
@@ -12,6 +13,8 @@ import AnswerCall from "../../components/answer_call/AnswerCall";
 import ShowProfile from "./../../components/show_profile/ShowProfile";
 
 function Home() {
+  const modalContext = React.useContext(ModalContext);
+  const { answerCall, showProfile } = modalContext;
   const [currentPage, setPage] = React.useState("chats");
   const chatAreaRef = React.useRef();
   const showChatArea = () => {
@@ -44,8 +47,8 @@ function Home() {
       <section ref={chatAreaRef} className="Home-chat-area">
         <ChatArea chatAreaRef={chatAreaRef} />
       </section>
-      <AnswerCall callType="mic" showClose={false} opened={false} />
-      <ShowProfile showClose={true} opened={true} />
+      <AnswerCall callType="mic" showClose={false} opened={answerCall} />
+      <ShowProfile showClose={true} opened={showProfile} />
     </div>
   );
 }

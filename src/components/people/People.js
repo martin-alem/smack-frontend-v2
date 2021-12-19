@@ -1,14 +1,16 @@
 import React from "react";
 import "./People.css";
-import UserImage from "./../../components/user_image/UserImage"
+import { ModalContext } from "./../../context/modalContext";
+import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 
 function People(props) {
   const { name, friends, image } = props;
-
+  const modalContext = React.useContext(ModalContext);
+  const { showProfile, setShowProfile } = modalContext;
   return (
     <div className="People">
-      <div className="People-info">
+      <div onClick={() => setShowProfile(!showProfile)} className="People-info">
         <UserImage size="s" alt={name} src={image} showStatus={false} />
         <div className="People-details">
           <h4>{name}</h4>

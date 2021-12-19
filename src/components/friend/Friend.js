@@ -1,9 +1,12 @@
 import React from "react";
 import "./Friend.css";
+import { ModalContext } from "./../../context/modalContext";
 import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
 
 function Friend(props) {
+  const modalContext = React.useContext(ModalContext);
+  const { showProfile, setShowProfile } = modalContext;
   const { name, friends, image } = props;
   const contents = [
     { text: "Profile", icon: "person" },
@@ -13,7 +16,7 @@ function Friend(props) {
 
   return (
     <div className="Friend">
-      <div className="Friend-info">
+      <div onClick={() => setShowProfile(!showProfile)} className="Friend-info">
         <UserImage size="s" alt={name} src={image} showStatus={true} status="online" />
         <div className="Friend-details">
           <h4>{name}</h4>

@@ -2,12 +2,13 @@ import React from "react";
 import "./Modal.css";
 
 function Modal(props) {
-  const { children, showClose, opened } = props;
+  const { children, showClose, opened, setModal } = props;
   const overlayRef = React.useRef();
   const modalRef = React.useRef();
   const toggleModal = () => {
     overlayRef.current.classList.toggle("hide");
     modalRef.current.classList.toggle("hide");
+    setModal(false);
   };
   return (
     <>
