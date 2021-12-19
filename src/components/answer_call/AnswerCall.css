@@ -1,0 +1,68 @@
+.AnswerCall {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AnswerCall h4 {
+  width: 20rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: var(--color-primary-text);
+  margin: 1rem 0;
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.AnswerCall p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary-text);
+  margin: 0.5rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.AnswerCall-action {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0.5rem 0;
+}
+
+.AnswerCall-action button .material-icons-outlined {
+  color: var(--color-white);
+}
+
+.AnswerCall-action button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  outline: none;
+}
+
+.AnswerCall-action .AnswerCall-answer {
+  border: 1px solid var(--color-online-status);
+  background-color: var(--color-online-status);
+  transition: all 0.4s;
+}
+
+.AnswerCall-action .AnswerCall-reject {
+  border: 1px solid var(--color-error);
+  background-color: var(--color-error);
+  transition: all 0.4s;
+}
+
+.AnswerCall-action .AnswerCall-answer:hover,
+.AnswerCall-reject:hover {
+  filter: brightness(0.85);
+}

@@ -8,7 +8,7 @@ import FindFriend from "../find_friend/FindFriend";
 import Notifications from "../notifications/Notifications";
 import Settings from "../settings/Settings";
 import ChatArea from "../chat_area/ChatArea";
-import Modal from "../../components/modal/Modal";
+import AnswerCall from "../../components/answer_call/AnswerCall";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -43,7 +43,7 @@ function Home() {
       <section ref={chatAreaRef} className="Home-chat-area">
         <ChatArea chatAreaRef={chatAreaRef} />
       </section>
-      <Modal />
+      <AnswerCall callType="mic" showClose={false} />
     </div>
   );
 }

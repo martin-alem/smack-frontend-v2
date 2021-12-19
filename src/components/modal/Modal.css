@@ -1,7 +1,5 @@
 .Modal {
   padding: 3rem;
-  width: 800px;
-  height: 600px;
   display: flex;
   border-radius: 6px;
   flex-direction: column;
