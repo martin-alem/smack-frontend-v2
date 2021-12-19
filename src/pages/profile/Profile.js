@@ -1,6 +1,7 @@
 import React from "react";
 import "./Profile.css";
-import Image from "./../../images/user.jpg";
+import UserImage from "../../components/user_image/UserImage";
+import image from "./../../images/user.jpg";
 import Accordion from "./../../components/accordion/Accordion";
 import Media from "./../../components/media/Media";
 import More from "../../components/more/More";
@@ -18,7 +19,7 @@ function Profile() {
         />
       </div>
       <div className="Profile-photo">
-        <img className="Profile-image" src={Image} alt="user profile" />
+        <UserImage src={image} alt="Martin Alemajoh" size="l" showStatus={false} status="online" />
         <div className="Profile-info">
           <h3>Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh</h3>
           <div className="Profile-status">

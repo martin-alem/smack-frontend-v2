@@ -1,6 +1,6 @@
 import React from "react";
 import "./People.css";
-import Image from "./../../components/image/Image";
+import UserImage from "./../../components/user_image/UserImage"
 import Button from "./../../components/button/Button";
 
 function People(props) {
@@ -9,7 +9,7 @@ function People(props) {
   return (
     <div className="People">
       <div className="People-info">
-        <Image dimension="70px" alt={name} src={image} />
+        <UserImage size="s" alt={name} src={image} showStatus={false} />
         <div className="People-details">
           <h4>{name}</h4>
           <p>{friends} mutual friends</p>

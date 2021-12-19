@@ -3,33 +3,68 @@
   cursor: pointer;
 }
 
-.UserImage-image-small {
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.UserImage-image-medium {
+.UserImage-image-xs {
   width: 5rem;
   height: 5rem;
 }
 
-.UserImage-image-large {
+.UserImage-image-s {
+  width: 7rem;
+  height: 7rem;
+}
+
+.UserImage-image-m {
   width: 8rem;
   height: 8rem;
+}
+
+.UserImage-image-l {
+  width: 20rem;
+  height: 20rem;
+}
+
+.UserImage-image-xl {
+  width: 30rem;
+  height: 30rem;
 }
 
 .UserImage-image {
   border: 2px solid var(--color-input-bg);
   border-radius: 50%;
 }
-
 .UserImage-status {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
+}
+
+/*Works with medium*/
+.UserImage-status-m {
   position: absolute;
-  top: 5rem;
-  left: 6.5rem;
+  top: 6.4rem;
+  left: 5.5rem;
+}
+
+/*Works with small*/
+.UserImage-status-s {
+  position: absolute;
+  top: 4.4rem;
+  left: 5.5rem;
+}
+
+/*Works with large*/
+.UserImage-status-l {
+  position: absolute;
+  top: 15.4rem;
+  left: 16.5rem;
+}
+
+
+/*Works with large*/
+.UserImage-status-xs {
+  position: absolute;
+  top: 3rem;
+  left: 3.6rem;
 }
 
 .online {

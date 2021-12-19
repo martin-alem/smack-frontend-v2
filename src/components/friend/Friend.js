@@ -1,6 +1,6 @@
 import React from "react";
 import "./Friend.css";
-import Image from "./../../components/image/Image";
+import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
 
 function Friend(props) {
@@ -13,7 +13,7 @@ function Friend(props) {
   return (
     <div className="Friend">
       <div className="Friend-info">
-        <Image dimension="70px" alt={name} src={image} />
+        <UserImage size="s" alt={name} src={image} showStatus={true} status="online" />
         <div className="Friend-details">
           <h4>{name}</h4>
           <p>{friends} mutual friends</p>

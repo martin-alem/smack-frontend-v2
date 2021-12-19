@@ -1,7 +1,6 @@
 import React from "react";
 import "./Notification.css";
-import Image from "./../../components/image/Image";
-import HorizontalRule from "./../../components/horizontal_rule/HorizontalRule";
+import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 
 function Notification(props) {
@@ -25,7 +24,7 @@ function Notification(props) {
     <div className="Notification">
       <div className="Notification-sender">
         <div className="Notification-info">
-          <Image dimension="70px" alt={user.name} src={user.image} />
+          <UserImage size="m" alt={user.name} src={user.image} showStatus={false} />
           <div className="Notification-details">
             <h4>{user.name}</h4>
             <p>{user.friends} mutual friends</p>

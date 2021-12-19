@@ -1,7 +1,7 @@
 import React from "react";
 import "./ChatNav.css";
 import image from "./../../images/user.jpg";
-import Image from "./../../components/image/Image";
+import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
 
 function ChatNav(props) {
@@ -24,7 +24,7 @@ function ChatNav(props) {
             chevron_left
           </span>
           <div className="ChatNav-user-info">
-            <Image src={image} alt="Image" dimension="50px" />
+            <UserImage src={image} alt="Image" size="xs" showStatus={true} status="online" />
             <h4>Martin Alemajoh</h4>
           </div>
         </div>

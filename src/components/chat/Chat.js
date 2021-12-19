@@ -9,7 +9,7 @@ function Chat(props) {
     <div className="Chat">
       <div className="Chat-info">
         <div className="Chat-image">
-          <UserImage alt={name} size="large" src={Image} status={status} />
+          <UserImage alt={name} size="s" showStatus={true} src={Image} status={status} />
         </div>
         <div className="Chat-name-message">
           <h4 className="Chat-userName">{name}</h4>

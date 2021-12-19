@@ -18,7 +18,14 @@ function OnlineFriends() {
   return (
     <div className="OnlineFriends">
       {onlineFriends.map((onlineFriend, index) => (
-        <UserImage alt={onlineFriend} key={index} size="large" src={Image} status={onlineFriend} />
+        <UserImage
+          alt={onlineFriend}
+          key={index}
+          size="m"
+          src={Image}
+          status={onlineFriend}
+          showStatus={true}
+        />
       ))}
     </div>
   );

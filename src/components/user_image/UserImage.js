@@ -2,11 +2,13 @@ import React from "react";
 import "./UserImage.css";
 
 function UserImage(props) {
-  const { size, alt, src, status } = props;
+  const { size, alt, src, status, showStatus } = props;
   return (
     <div className="UserImage">
       <img src={src} alt={alt} className={`UserImage-image UserImage-image-${size}`} />
-      <div className={`UserImage-status ${status}`}></div>
+      {showStatus ? (
+        <div className={`UserImage-status UserImage-status-${size} ${status}`}></div>
+      ) : null}
     </div>
   );
 }

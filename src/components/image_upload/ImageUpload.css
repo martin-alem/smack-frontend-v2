@@ -16,10 +16,11 @@
 }
 
 .ImageUpload-upload-icon {
-  font-size: 3rem;
+  font-size: 5rem;
   color: var(--color-secondary-text);
   position: absolute;
-  top: 20rem;
-  left: 26rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
 }
