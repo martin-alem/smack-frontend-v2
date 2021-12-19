@@ -39,8 +39,8 @@ function Notification(props) {
       </div>
       {action ? (
         <div className="Notification-action">
-          <Button variant="small" icon="person_add" text="Accept Request" />
-          <Button variant="small" icon="person_add" text="Reject Request" />
+          <Button variant="primary" size="small" icon="person_add" text="Accept Request" />
+          <Button variant="secondary" size="small" icon="person_add" text="Reject Request" />
         </div>
       ) : null}
       <div className="Notification-time">

@@ -16,7 +16,7 @@ function People(props) {
         </div>
       </div>
       <div className="People-add">
-        <Button variant="small" text="Request" icon="person_add" />
+        <Button variant="primary" size="small" text="Request" icon="person_add" />
       </div>
     </div>
   );
