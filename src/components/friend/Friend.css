@@ -14,8 +14,13 @@
 }
 
 .Friend-details h4 {
+  width: 20rem;
   font-size: 2rem;
   color: var(--color-primary-text);
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Friend-details p {

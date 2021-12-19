@@ -12,7 +12,11 @@ function Notifications() {
       icon: "people",
       date: "11/09/21",
       read: false,
-      user: { name: "Martin Alemajoh", image: Image, friends: 567 },
+      user: {
+        name: "Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh",
+        image: Image,
+        friends: 567,
+      },
       label: "success",
       action: false,
     },

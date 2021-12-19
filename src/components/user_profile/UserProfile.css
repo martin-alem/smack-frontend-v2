@@ -16,7 +16,7 @@
 .UserProfile-context-menu {
   position: absolute;
   width: 15rem;
-  top: -14rem;
+  top: -10rem;
   left: 1rem;
   background-color: var(--color-white);
   border-radius: 5px;
@@ -46,8 +46,8 @@
   .UserProfile-context-menu {
     position: absolute;
     width: 15rem;
-    top: -14rem;
-    left: -14rem;
+    top: -10rem;
+    left: -10rem;
     background-color: var(--color-white);
     border-radius: 5px;
     box-shadow: 4px 4px 5px;

@@ -7,7 +7,11 @@ import People from "./../../components/people/People";
 
 function FindFriend() {
   const friends = [
-    { name: "Martin Alemajoh", image: Image, friends: 567 },
+    {
+      name: "Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh",
+      image: Image,
+      friends: 567,
+    },
     { name: "Martin Alemajoh", image: Image, friends: 567 },
     { name: "Martin Alemajoh", image: Image, friends: 567 },
     { name: "Martin Alemajoh", image: Image, friends: 567 },

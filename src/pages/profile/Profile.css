@@ -47,9 +47,14 @@
 }
 
 .Profile-info h3 {
+  width: 20rem;
+  text-align: center;
   font-size: 2rem;
   color: var(--color-secondary-text);
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Profile-online {
@@ -104,12 +109,22 @@
 
 .Profile-firstName,
 .Profile-lastName,
-.Profile-email,
-.Profile-phone,
 .Profile-friends h4 {
   font-size: 2rem;
   color: var(--color-primary-text);
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Profile-email,
+.Profile-phone {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* width */

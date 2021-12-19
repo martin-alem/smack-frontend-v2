@@ -20,7 +20,7 @@ function Profile() {
       <div className="Profile-photo">
         <img className="Profile-image" src={Image} alt="user profile" />
         <div className="Profile-info">
-          <h3>Martin Alemajoh</h3>
+          <h3>Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh</h3>
           <div className="Profile-status">
             <div className="Profile-online"></div>
             <div className="Profile-online-text">Online</div>
@@ -33,7 +33,7 @@ function Profile() {
           <div className="Profile-about-content">
             <div className="Profile-firstName">
               <p>First Name </p>
-              <h4>Martin</h4>
+              <h4>Martin Martin Martin Martin Martin Martin Martin Martin</h4>
             </div>
             <div className="Profile-lastName">
               <p>Last Name</p>
@@ -65,7 +65,11 @@ function Profile() {
 
         <Accordion name="personal-info" title="Attached Files" icon="attachment" type="attachment">
           <div className="Profile-media-content">
-            <Media name="Image1.jpg" icon="image" size="34" />
+            <Media
+              name="Image1.jpg Image1.jpg Image1.jpg Image1.jpg Image1.jpg"
+              icon="image"
+              size="34"
+            />
             <Media name="Image1.jpg" icon="image" size="34" />
             <Media name="Image1.jpg" icon="image" size="34" />
             <Media name="Image1.jpg" icon="image" size="34" />

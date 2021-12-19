@@ -14,7 +14,10 @@ function Settings() {
       <div className="Settings-photo">
         <div className="Settings-info">
           <ImageUpload />
-          <h3>Martin Alemajoh</h3>
+          <h3>
+            Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin
+            Alemajoh
+          </h3>
         </div>
       </div>
 

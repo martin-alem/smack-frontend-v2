@@ -10,8 +10,9 @@ function Chats(props) {
   const chats = [
     {
       image: Image,
-      name: "Martin Alemajoh",
-      lastMessage: "Hi bro hope you ok?",
+      name: "Martin Alemajoh Martin",
+      lastMessage:
+        "Hi bro hope you ok? Hi bro hope you ok? Hi bro hope you ok? Hi bro hope you ok?",
       time: "11:23",
       unread: 2,
       status: "online",

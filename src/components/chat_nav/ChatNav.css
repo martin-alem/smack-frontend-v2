@@ -32,8 +32,13 @@
 }
 
 .ChatNav-user-info h4 {
+  width: 20rem;
   font-size: 1.5em;
   color: var(--color-primary-text);
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ChatNav-right .material-icons-outlined {

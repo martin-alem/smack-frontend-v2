@@ -6,7 +6,11 @@ import Image from "./../../images/user.jpg";
 
 function Friends() {
   const friends = [
-    { name: "Martin Alemajoh", image: Image, friends: 567 },
+    {
+      name: "Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh",
+      image: Image,
+      friends: 567,
+    },
     { name: "Martin Alemajoh", image: Image, friends: 567 },
     { name: "Martin Alemajoh", image: Image, friends: 567 },
     { name: "Martin Alemajoh", image: Image, friends: 567 },

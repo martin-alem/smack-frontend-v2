@@ -21,10 +21,14 @@
 }
 
 .Settings-info h3 {
+  width: 20rem;
   margin-top: 1.5rem;
   font-size: 2rem;
   color: var(--color-secondary-text);
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Settings-personal-settings {
