@@ -1,0 +1,58 @@
+.ShowProfile {
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.ShowProfile-personal-info {
+  width: 100%;
+}
+
+.ShowProfile-photo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ShowProfile-firstName,
+.ShowProfile-lastName,
+.ShowProfile-email,
+.ShowProfile-phone,
+.ShowProfile-friends {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.ShowProfile-firstName p,
+.ShowProfile-lastName p,
+.ShowProfile-email p,
+.ShowProfile-phone p,
+.ShowProfile-friends p {
+  font-size: 1.5rem;
+  color: var(--color-secondary-text);
+}
+
+.ShowProfile-firstName,
+.ShowProfile-lastName,
+.ShowProfile-friends h4 {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ShowProfile-email,
+.ShowProfile-phone {
+  font-size: 2rem;
+  color: var(--color-primary-text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

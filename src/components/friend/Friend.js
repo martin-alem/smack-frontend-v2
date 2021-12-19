@@ -7,6 +7,7 @@ function Friend(props) {
   const { name, friends, image } = props;
   const contents = [
     { text: "Profile", icon: "person" },
+    { text: "chat", icon: "chat" },
     { text: "Block", icon: "block" },
   ];
 

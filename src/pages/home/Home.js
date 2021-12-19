@@ -9,6 +9,7 @@ import Notifications from "../notifications/Notifications";
 import Settings from "../settings/Settings";
 import ChatArea from "../chat_area/ChatArea";
 import AnswerCall from "../../components/answer_call/AnswerCall";
+import ShowProfile from "./../../components/show_profile/ShowProfile";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -43,7 +44,8 @@ function Home() {
       <section ref={chatAreaRef} className="Home-chat-area">
         <ChatArea chatAreaRef={chatAreaRef} />
       </section>
-      <AnswerCall callType="mic" showClose={false} />
+      <AnswerCall callType="mic" showClose={false} opened={false} />
+      <ShowProfile showClose={true} opened={true} />
     </div>
   );
 }

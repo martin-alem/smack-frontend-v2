@@ -5,10 +5,10 @@ import Image from "./../../images/user.jpg";
 import Modal from "./../../components/modal/Modal";
 
 function AnswerCall(props) {
-  const { callType, showClose } = props;
-  const call = callType === "mic" ? "Audio" : "Video";
+  const { callType, showClose, opened } = props;
+
   return (
-    <Modal showClose={showClose}>
+    <Modal showClose={showClose} opened={opened}>
       <div className="AnswerCall">
         <UserImage src={Image} alt="Martin Alemajoh" size="l" showStatus={false} />
         <h4>Martin Alemajoh</h4>

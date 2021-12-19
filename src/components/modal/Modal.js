@@ -2,7 +2,7 @@ import React from "react";
 import "./Modal.css";
 
 function Modal(props) {
-  const { children, showClose } = props;
+  const { children, showClose, opened } = props;
   const overlayRef = React.useRef();
   const modalRef = React.useRef();
   const toggleModal = () => {
@@ -11,8 +11,8 @@ function Modal(props) {
   };
   return (
     <>
-      <div ref={overlayRef} className="Modal-overlay hide"></div>
-      <div ref={modalRef} className="Modal hide">
+      <div ref={overlayRef} className={opened ? `Modal-overlay` : `Modal-overlay hide`}></div>
+      <div ref={modalRef} className={opened ? `Modal` : `Modal hide`}>
         {showClose ? (
           <span onClick={toggleModal} className="material-icons-outlined">
             close
