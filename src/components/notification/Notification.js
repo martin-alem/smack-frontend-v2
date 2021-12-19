@@ -17,6 +17,8 @@ function Notification(props) {
         return "Missed Call";
       case "friend_request":
         return "Friend Request";
+      default:
+        return "";
     }
   };
   return (
