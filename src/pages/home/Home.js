@@ -8,6 +8,7 @@ import FindFriend from "../find_friend/FindFriend";
 import Notifications from "../notifications/Notifications";
 import Settings from "../settings/Settings";
 import ChatArea from "../chat_area/ChatArea";
+import Modal from "../../components/modal/Modal";
 
 function Home() {
   const [currentPage, setPage] = React.useState("chats");
@@ -42,6 +43,7 @@ function Home() {
       <section ref={chatAreaRef} className="Home-chat-area">
         <ChatArea chatAreaRef={chatAreaRef} />
       </section>
+      <Modal />
     </div>
   );
 }

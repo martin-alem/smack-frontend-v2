@@ -1,0 +1,32 @@
+.Modal {
+  padding: 3rem;
+  width: 800px;
+  height: 600px;
+  display: flex;
+  border-radius: 6px;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  background-color: var(--color-secondary);
+}
+
+.Modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background-color: var(--color-primary);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Modal .material-icons-outlined {
+  color: var(--color-gray-text);
+  font-size: 4rem;
+  text-align: right;
+  cursor: pointer;
+}
