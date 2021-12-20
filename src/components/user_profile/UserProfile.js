@@ -7,11 +7,15 @@ function UserProfile(props) {
   const toggleContextMenu = () => {
     contextMenu.current.classList.toggle("hide");
   };
+  const handleItemClick = (arg, callback) => {
+    callback(arg);
+    toggleContextMenu();
+  };
   const { setPage } = props;
   return (
     <div className="UserProfile">
       <div ref={contextMenu} className="UserProfile-context-menu hide">
-        <div onClick={() => setPage("settings")} className="UserProfile-context">
+        <div onClick={() => handleItemClick("settings", setPage)} className="UserProfile-context">
           <span className="profile-text">Settings</span>
           <span className="material-icons-outlined">settings</span>
         </div>

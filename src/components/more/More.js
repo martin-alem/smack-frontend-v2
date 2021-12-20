@@ -3,9 +3,14 @@ import "./More.css";
 
 function More(props) {
   const { contents } = props;
+  console.log(contents);
   const moreRef = React.useRef();
   const toggleMore = () => {
     moreRef.current.classList.toggle("hide");
+  };
+  const handleItemClick = callback => {
+    callback();
+    toggleMore();
   };
   return (
     <div className="More">
@@ -15,7 +20,7 @@ function More(props) {
       <div ref={moreRef} className="More-content hide">
         {contents.map((content, index) => {
           return (
-            <div onClick={content.action} key={index} className="More-item">
+            <div onClick={() => handleItemClick(content.action)} key={index} className="More-item">
               <p className="More-item-text">{content.text}</p>
               <span className="material-icons-outlined">{content.icon}</span>
             </div>

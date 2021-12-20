@@ -9,14 +9,14 @@ function Friend(props) {
   const { showProfile, setShowProfile } = modalContext;
   const { name, friends, image, showChatArea } = props;
   const contents = [
-    { text: "Profile", icon: "person", action: () => console.log("Hi there!") },
+    { text: "Profile", icon: "person", action: () => setShowProfile(!showProfile) },
     { text: "chat", icon: "chat", action: showChatArea },
-    { text: "Block", icon: "block", action: () => console.log("Hi there!") },
+    { text: "Block", icon: "block", action: () => console.log("Block user") },
   ];
 
   return (
     <div className="Friend">
-      <div onClick={() => setShowProfile(!showProfile)} className="Friend-info">
+      <div onClick={showChatArea} className="Friend-info">
         <UserImage size="s" alt={name} src={image} showStatus={true} status="online" />
         <div className="Friend-details">
           <h4>{name}</h4>
