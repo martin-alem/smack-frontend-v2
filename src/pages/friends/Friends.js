@@ -4,7 +4,8 @@ import SearchInput from "./../../components/search_input/SearchInput";
 import Friend from "../../components/friend/Friend";
 import Image from "./../../images/user.jpg";
 
-function Friends() {
+function Friends(props) {
+  const { showChatArea } = props;
   const friends = [
     {
       name: "Martin Alemajoh Martin Alemajoh Martin Alemajoh Martin Alemajoh",
@@ -40,7 +41,13 @@ function Friends() {
       <div className="Friends-friends">
         {friends.map((friend, index) => {
           return (
-            <Friend key={index} name={friend.name} image={friend.image} friends={friend.friends} />
+            <Friend
+              key={index}
+              name={friend.name}
+              image={friend.image}
+              friends={friend.friends}
+              showChatArea={showChatArea}
+            />
           );
         })}
       </div>

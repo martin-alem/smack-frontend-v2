@@ -4,11 +4,12 @@ import { ModalContext } from "./../../context/modalContext";
 import Modal from "../modal/Modal";
 import UserImage from "../../components/user_image/UserImage";
 import image from "./../../images/user.jpg";
+import Button from "./../../components/button/Button";
 
 function ShowProfile(props) {
   const modalContext = React.useContext(ModalContext);
   const { setShowProfile } = modalContext;
-  const { showClose, opened } = props;
+  const { showClose, opened, isFriend } = props;
   return (
     <Modal showClose={showClose} opened={opened} setModal={setShowProfile}>
       <div className="ShowProfile">
@@ -41,6 +42,11 @@ function ShowProfile(props) {
               <h4>365</h4>
             </div>
           </div>
+        </div>
+        <div className="ShowProfile-send-request">
+          {isFriend ? null : (
+            <Button variant="primary" size="small" text="Send Request" icon="person_add" />
+          )}
         </div>
       </div>
     </Modal>

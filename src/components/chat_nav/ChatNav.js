@@ -10,10 +10,10 @@ function ChatNav(props) {
   const { showProfile, setShowProfile } = modalContext;
   const { chatAreaRef } = props;
   const contents = [
-    { text: "Profile", icon: "person" },
-    { text: "Archive", icon: "archive" },
-    { text: "Mute", icon: "volume_off" },
-    { text: "Delete", icon: "delete" },
+    { text: "Profile", icon: "person", action: () => setShowProfile(!showProfile) },
+    { text: "Archive", icon: "archive", action: () => console.log("Archive this chat") },
+    { text: "Mute", icon: "volume_off", action: () => console.log("Mute this chat") },
+    { text: "Delete", icon: "delete", action: () => console.log("Delete this chat") },
   ];
 
   const hideChatArea = () => {

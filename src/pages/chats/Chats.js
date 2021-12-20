@@ -80,7 +80,7 @@ function Chats(props) {
         <SearchInput name="search_input" placeholder="Search messages or users" />
       </div>
       <div className="Chats-online-friends">
-        <OnlineFriends />
+        <OnlineFriends showChatArea={showChatArea} />
       </div>
 
       <div className="Chats-heading2">Recent</div>

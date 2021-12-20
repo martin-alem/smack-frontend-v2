@@ -1,12 +1,10 @@
 import React from "react";
 import "./OnlineFriends.css";
-import { ModalContext } from "./../../context/modalContext";
 import UserImage from "./../../components/user_image/UserImage";
 import Image from "./../../images/user.jpg";
 
-function OnlineFriends() {
-  const modalContext = React.useContext(ModalContext);
-  const { showProfile, setShowProfile } = modalContext;
+function OnlineFriends(props) {
+  const { showChatArea } = props;
   const onlineFriends = [
     "busy",
     "online",
@@ -19,7 +17,7 @@ function OnlineFriends() {
     "busy",
   ];
   return (
-    <div onClick={() => setShowProfile(!showProfile)} className="OnlineFriends">
+    <div onClick={showChatArea} className="OnlineFriends">
       {onlineFriends.map((onlineFriend, index) => (
         <UserImage
           alt={onlineFriend}

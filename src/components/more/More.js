@@ -15,7 +15,7 @@ function More(props) {
       <div ref={moreRef} className="More-content hide">
         {contents.map((content, index) => {
           return (
-            <div key={index} className="More-item">
+            <div onClick={content.action} key={index} className="More-item">
               <p className="More-item-text">{content.text}</p>
               <span className="material-icons-outlined">{content.icon}</span>
             </div>

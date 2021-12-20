@@ -27,7 +27,7 @@ function Home() {
     } else if (arg === "profile") {
       return <Profile />;
     } else if (arg === "friends") {
-      return <Friends />;
+      return <Friends showChatArea={showChatArea} />;
     } else if (arg === "find_friends") {
       return <FindFriend />;
     } else if (arg === "notifications") {

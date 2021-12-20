@@ -13,8 +13,8 @@ function Profile() {
         <h4>Profile</h4>
         <More
           contents={[
-            { text: "Logout", icon: "logout" },
-            { text: "Delete Account", icon: "remove_circle_outline" },
+            { text: "Logout", icon: "logout", action: () => console.log("logout")},
+            { text: "Delete Account", icon: "remove_circle_outline", action: () => console.log("Delete account")},
           ]}
         />
       </div>

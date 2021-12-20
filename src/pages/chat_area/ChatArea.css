@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.ChatArea-nav {
+  width: 100%;
+}
+
 .ChatArea-messages {
   height: 80%;
 }

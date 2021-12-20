@@ -7,11 +7,11 @@ import More from "./../../components/more/More";
 function Friend(props) {
   const modalContext = React.useContext(ModalContext);
   const { showProfile, setShowProfile } = modalContext;
-  const { name, friends, image } = props;
+  const { name, friends, image, showChatArea } = props;
   const contents = [
-    { text: "Profile", icon: "person" },
-    { text: "chat", icon: "chat" },
-    { text: "Block", icon: "block" },
+    { text: "Profile", icon: "person", action: () => console.log("Hi there!") },
+    { text: "chat", icon: "chat", action: showChatArea },
+    { text: "Block", icon: "block", action: () => console.log("Hi there!") },
   ];
 
   return (
