@@ -10,6 +10,16 @@
 }
 
 .ChatArea-messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 6rem;
   height: 80%;
   z-index: 15;
+  overflow-y: auto;
+}
+
+/* width */
+.ChatArea-messages::-webkit-scrollbar {
+  width: 0px;
 }

@@ -27,3 +27,11 @@
 .People-details p {
   color: var(--color-primary-text);
 }
+
+.People-add {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 1rem;
+}

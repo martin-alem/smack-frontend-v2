@@ -12,6 +12,7 @@ function Friend(props) {
     { text: "Profile", icon: "person", action: () => setShowProfile(!showProfile) },
     { text: "chat", icon: "chat", action: showChatArea },
     { text: "Block", icon: "block", action: () => console.log("Block user") },
+    { text: "Remove", icon: "person_remove", action: () => console.log("Remove user") },
   ];
 
   return (

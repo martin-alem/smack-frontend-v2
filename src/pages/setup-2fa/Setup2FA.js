@@ -33,7 +33,7 @@ function Setup2FA() {
         />
       </div>
       <div className="Setup2FA-button">
-        <Button variant="contained" text="Setup 2FA" />
+        <Button variant="primary" size="m" text="Setup 2FA" />
       </div>
       <div className="Setup2FA-info">
         <span className="material-icons icon">info</span>

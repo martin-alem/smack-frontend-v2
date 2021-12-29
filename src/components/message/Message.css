@@ -1,0 +1,92 @@
+.Message {
+  max-width: 40rem;
+  margin-bottom: 3.5rem;
+}
+
+.Message-more {
+  width: 100%;
+  position: relative;
+}
+
+.Message-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.Message-box {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Message-video {
+  border: 2px solid var(--color-white);
+  border-radius: 4px;
+}
+
+.Message-time {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+.Message-owner-image {
+  position: absolute;
+  top: -2rem;
+  left: -4rem;
+}
+
+.Message-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Message-details h3 {
+  color: var(--color-gray-text);
+}
+
+.Message-details > :last-child {
+  font-size: 2rem;
+}
+.Message-box p {
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.Message-time > * {
+  font-size: 2rem;
+}
+
+.Message-attachment-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.Message-incoming {
+  align-self: flex-start;
+}
+
+.incoming-message {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.outgoing-message {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-text);
+}
+
+.Message-outgoing {
+  align-self: flex-end;
+}
