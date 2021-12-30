@@ -1,6 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { ModalContext } from "./../../context/modalContext";
+import { SettingContext } from "../../context/settingContext";
+import { UserContext } from "../../context/userContext";
 import Navigation from "./../../components/nav/Navigation";
 import Chats from "./../../pages/chats/Chats";
 import Profile from "./../../pages/profile/Profile";
@@ -11,9 +13,12 @@ import Settings from "../settings/Settings";
 import ChatArea from "../chat_area/ChatArea";
 import AnswerCall from "../../components/answer_call/AnswerCall";
 import ShowProfile from "./../../components/show_profile/ShowProfile";
+import httpAgent from "./../../utils/httpAgent";
 
 function Home() {
   const modalContext = React.useContext(ModalContext);
+  const settingContext = React.useContext(SettingContext);
+  const userContext = React.useContext(UserContext);
   const { answerCall, showProfile } = modalContext;
   const [currentPage, setPage] = React.useState("chats");
   const chatAreaRef = React.useRef();
@@ -38,6 +43,28 @@ function Home() {
       return <Chats showChatArea={showChatArea} />;
     }
   };
+
+  React.useEffect(() => {
+    const fetchSettings = async () => {
+      const { _id } = userContext.user || "";
+      try {
+        const option = {
+          headers: { Accept: "application/json" },
+          body: null,
+        };
+        const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/settings/${_id}`, option);
+        const jsonResponse = await serverResponse.json();
+        if (serverResponse.ok) {
+          settingContext.setUserSetting(jsonResponse["payload"]);
+        } else {
+          console.log(jsonResponse);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSettings();
+  }, []);
   return (
     <div className="Home">
       <nav className="Home-nav">
