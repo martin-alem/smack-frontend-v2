@@ -3,7 +3,6 @@ import "./More.css";
 
 function More(props) {
   const { contents } = props;
-  console.log(contents);
   const moreRef = React.useRef();
   const toggleMore = () => {
     moreRef.current.classList.toggle("hide");

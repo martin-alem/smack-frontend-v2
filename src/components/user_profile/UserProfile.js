@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserProfile.css";
 import Profile from "./../../images/user.jpg";
+import httpAgent from "./../../utils/httpAgent";
 
 function UserProfile(props) {
   const contextMenu = React.useRef();
@@ -11,6 +12,23 @@ function UserProfile(props) {
     callback(arg);
     toggleContextMenu();
   };
+
+  const logout = async () => {
+    try {
+      const option = {
+        headers: { Accept: "application/json" },
+        body: null,
+      };
+      const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/logout`, option);
+      if (serverResponse.ok) {
+        window.location.replace("/");
+      } else {
+        console.log(serverResponse);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const { setPage } = props;
   return (
     <div className="UserProfile">
@@ -19,19 +37,12 @@ function UserProfile(props) {
           <span className="profile-text">Settings</span>
           <span className="material-icons-outlined">settings</span>
         </div>
-        <div className="UserProfile-context">
+        <div onClick={() => handleItemClick("home", logout)} className="UserProfile-context">
           <span className="profile-text">Logout</span>
           <span className="material-icons-outlined">logout</span>
         </div>
       </div>
-      <img
-        onClick={toggleContextMenu}
-        className="profile"
-        src={Profile}
-        alt="User profile"
-        width="50px"
-        height="50px"
-      />
+      <img onClick={toggleContextMenu} className="profile" src={Profile} alt="User profile" width="50px" height="50px" />
     </div>
   );
 }

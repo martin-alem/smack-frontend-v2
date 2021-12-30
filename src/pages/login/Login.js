@@ -14,12 +14,15 @@ function Login() {
       const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/login`, option);
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
-        console.log(jsonResponse);
+        if (jsonResponse.code === "SLP") {
+          window.location.replace("/home");
+        } else if (jsonResponse.code === "SUD") {
+          window.location.assign("/verify_device");
+        }
       } else {
         console.log(jsonResponse);
       }
-    } catch ( error )
-    {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -32,7 +35,15 @@ function Login() {
       <Logo />
       <h1 className="Login-heading">Sign in</h1>
       <h5 className="Login-sub-heading">Sign in to continue with smack</h5>
-      <GoogleLogin clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID} buttonText="Continue With Your Google Account" onSuccess={onSuccess} onFailure={onFailure} theme="dark" responseType="token" cookiePolicy={"single_host_origin"} />
+      <GoogleLogin
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+        buttonText="Continue With Your Google Account"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        theme="dark"
+        responseType="token"
+        cookiePolicy={"single_host_origin"}
+      />
       <p className="Login-tag">&copy;smack</p>
     </div>
   );
