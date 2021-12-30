@@ -1,10 +1,12 @@
 import React from "react";
+import { UserContext } from "../../context/userContext";
 import Logo from "./../../components/logo/Logo";
 import GoogleLogin from "react-google-login";
 import httpAgent from "./../../utils/httpAgent";
 import "./Login.css";
 
 function Login() {
+  const userContext = React.useContext(UserContext);
   const onSuccess = async response => {
     try {
       const option = {
@@ -15,6 +17,7 @@ function Login() {
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
         if (jsonResponse.code === "SLP") {
+          userContext.setUser(jsonResponse["payload"]);
           window.location.replace("/home");
         } else if (jsonResponse.code === "SUD") {
           window.location.assign("/verify_device");

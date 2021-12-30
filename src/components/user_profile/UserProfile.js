@@ -21,6 +21,7 @@ function UserProfile(props) {
       };
       const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/logout`, option);
       if (serverResponse.ok) {
+        localStorage.clear();
         window.location.replace("/");
       } else {
         console.log(serverResponse);
