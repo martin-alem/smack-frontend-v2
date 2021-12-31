@@ -17,8 +17,13 @@ function Settings() {
   const updateContext = React.useContext(UpdateContext);
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
+  const userSettings = settingContext.userSetting["settings"];
 
   const { hidePicture, hideStatus, hideReadReceipt, towFA } = settingContext.userSetting.settings;
+  const [picture, setPicture] = React.useState(hidePicture);
+  const [status, setStatus] = React.useState(hideStatus);
+  const [readReceipt, setReadReceipt] = React.useState(hideReadReceipt);
+  const [twoFA, setTwoFA] = React.useState(towFA);
   const [phone, setPhone] = React.useState(user.phoneNumber);
   const [story, setStory] = React.useState(user.story);
   const [submittingChanges, setSubmittingChanges] = React.useState(false);
@@ -28,9 +33,67 @@ function Settings() {
     setPhone(e.target.value);
     setAnyPersonalChanges(true);
   };
+
   const handleStoryUpdate = e => {
     setStory(e.target.value);
     setAnyPersonalChanges(true);
+  };
+
+  const handleStatusUpdate = e => {
+    setStatus(e.target.checked);
+    userSettings["hideStatus"] = e.target.checked;
+    settingContext.setUserSetting(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+
+    updateContext.setUpdate(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+    updateContext.setAnyUpdate(true);
+  };
+
+  const handlePictureUpdate = e => {
+    setPicture(e.target.checked);
+    userSettings["hidePicture"] = e.target.checked;
+    settingContext.setUserSetting(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+
+    updateContext.setUpdate(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+    updateContext.setAnyUpdate(true);
+  };
+
+  const handleReadReceiptUpdate = e => {
+    setReadReceipt(e.target.checked);
+    userSettings["hideReadReceipt"] = e.target.checked;
+    settingContext.setUserSetting(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+
+    updateContext.setUpdate(prevState => {
+      return {
+        ...prevState,
+        settings: userSettings,
+      };
+    });
+    updateContext.setAnyUpdate(true);
   };
 
   const submitPersonalChanges = () => {
@@ -50,7 +113,7 @@ function Settings() {
       };
     });
 
-    setAnyPersonalChanges( false );
+    setAnyPersonalChanges(false);
     updateContext.setAnyUpdate(true);
   };
 
@@ -106,22 +169,22 @@ function Settings() {
         <Accordion name="personal-settings" title="Privacy" icon="lock_open" type="privacy">
           <div className="Settings-privacy Settings-status">
             <p>Hide Online Status</p>
-            <ToggleSwitch name="status" type="status" state={hideStatus} />
+            <ToggleSwitch name="status" type="status" state={status} action={handleStatusUpdate} />
           </div>
           <div className="Settings-privacy Settings-profile">
             <p>Hide Profile Picture</p>
-            <ToggleSwitch name="profile" type="profile" state={hidePicture} />
+            <ToggleSwitch name="profile" type="profile" state={picture} action={handlePictureUpdate} />
           </div>
           <div className="Settings-privacy Settings-read-receipt">
             <p>Hide Read Receipt</p>
-            <ToggleSwitch name="read-receipt" type="read-receipt" state={hideReadReceipt} />
+            <ToggleSwitch name="read-receipt" type="read-receipt" state={readReceipt} action={handleReadReceiptUpdate} />
           </div>
         </Accordion>
 
         <Accordion name="personal-settings" title="Security" icon="security" type="security">
           <div className="Settings-security Settings-2fa">
             <p>Enable 2FA</p>
-            <ToggleSwitch name="2fa" type="2fa" state={towFA} />
+            <ToggleSwitch name="2fa" type="2fa" state={twoFA} />
           </div>
         </Accordion>
       </div>
