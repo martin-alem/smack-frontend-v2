@@ -7,11 +7,7 @@ function Button(props) {
   const buttonSize = ["small", "medium", "large"].includes(size) ? size : "medium";
   return (
     <div className="Button">
-      <button
-        disabled={loading}
-        onClick={action}
-        className={`Button-btn Button-${buttonClass}-${buttonSize}`}
-      >
+      <button disabled={loading} onClick={action} className={`Button-btn Button-${buttonClass}-${buttonSize}`}>
         {icon ? <span className="material-icons">{icon}</span> : null}
         {loading ? "Please wait..." : text}
       </button>

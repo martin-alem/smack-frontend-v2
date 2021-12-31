@@ -8,11 +8,18 @@
 }
 
 .Settings-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10rem;
+}
+
+.Settings-heading h4 {
   font-size: 4rem;
   font-weight: bolder;
   color: var(--color-secondary-text);
 }
-
 .Settings-info {
   display: flex;
   justify-content: center;
@@ -43,19 +50,22 @@
 }
 
 .Settings-privacy,
-.Settings-security {
+.Settings-security,
+.Settings-read-receipt {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.Settings-status {
+.Settings-status,
+.Settings-profile {
   margin-bottom: 2rem;
 }
 
 .Settings-privacy,
-.Settings-security p {
+.Settings-security,
+.Settings-read-receipt p {
   font-size: 1.6rem;
   color: var(--color-secondary-text);
 }
