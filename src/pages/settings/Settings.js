@@ -19,11 +19,11 @@ function Settings() {
   const user = userContext.user;
   const userSettings = settingContext.userSetting["settings"];
 
-  const { hidePicture, hideStatus, hideReadReceipt, towFA } = settingContext.userSetting.settings;
+  const { hidePicture, hideStatus, hideReadReceipt, twoFA } = settingContext.userSetting.settings;
   const [picture, setPicture] = React.useState(hidePicture);
   const [status, setStatus] = React.useState(hideStatus);
   const [readReceipt, setReadReceipt] = React.useState(hideReadReceipt);
-  const [twoFA, setTwoFA] = React.useState(towFA);
+  const [TFA, setTwoFA] = React.useState(twoFA);
   const [phone, setPhone] = React.useState(user.phoneNumber);
   const [story, setStory] = React.useState(user.story);
   const [submittingChanges, setSubmittingChanges] = React.useState(false);
@@ -96,6 +96,31 @@ function Settings() {
     updateContext.setAnyUpdate(true);
   };
 
+  const handleTwoFAUpdate = async e => {
+    setTwoFA(e.target.checked);
+    if (!TFA) {
+      if (!user["phoneNumber"]) return console.error("Please update your phone number");
+      const codeReceived = await getVerificationCode(user["phoneNumber"]);
+      if (!codeReceived) return console.error("Unable to send a verification code");
+    } else {
+      userSettings["twoFA"] = !TFA;
+      settingContext.setUserSetting(prevState => {
+        return {
+          ...prevState,
+          settings: userSettings,
+        };
+      });
+
+      updateContext.setUpdate(prevState => {
+        return {
+          ...prevState,
+          settings: userSettings,
+        };
+      });
+      updateContext.setAnyUpdate(true);
+    }
+  };
+
   const submitPersonalChanges = () => {
     if (!validatePhone()) return console.error("Invalid phone number");
     updateContext.setUpdate(prevState => {
@@ -145,6 +170,25 @@ function Settings() {
     updateContext.setAnyUpdate(false);
     setSubmittingChanges(false);
   };
+
+  const getVerificationCode = async phone => {
+    try {
+      const option = {
+        headers: { Accept: "application/json" },
+        body: null,
+      };
+      const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/code/${user._id}/${phone}`, option);
+      if (serverResponse.ok) {
+        window.location.assign("/setup_2fa");
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
   return (
     <div className="Settings">
       <div className="Settings-heading">
@@ -184,7 +228,7 @@ function Settings() {
         <Accordion name="personal-settings" title="Security" icon="security" type="security">
           <div className="Settings-security Settings-2fa">
             <p>Enable 2FA</p>
-            <ToggleSwitch name="2fa" type="2fa" state={twoFA} />
+            <ToggleSwitch name="2fa" type="2fa" state={TFA} action={handleTwoFAUpdate} />
           </div>
         </Accordion>
       </div>

@@ -21,7 +21,7 @@ function App() {
             <ModalContextProvider>
               <Switch>
                 <Route path="/" exact component={Login} />
-                <Route path="/setup-2fa" exact component={Setup2FA} />
+                <Route path="/setup_2fa" exact component={Setup2FA} />
                 <Route path="/verify_device" exact component={Verify} />
                 <ProtectedRoute path="/home" exact component={Home} />
                 <Route component={NotFound} />
