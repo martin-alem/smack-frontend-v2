@@ -11,6 +11,7 @@ import TextArea from "../../components/textarea/TextArea";
 import ToggleSwitch from "../../components/toggle_switch/ToggleSwitch";
 import Button from "../../components/button/Button";
 import httpAgent from "./../../utils/httpAgent";
+import Toast from "./../../components/toast/Toast";
 
 function Settings() {
   const settingContext = React.useContext(SettingContext);
@@ -28,6 +29,7 @@ function Settings() {
   const [story, setStory] = React.useState(user.story);
   const [submittingChanges, setSubmittingChanges] = React.useState(false);
   const [anyPersonalChanges, setAnyPersonalChanges] = useLocalStorage("smack_any_personal_changes", false);
+  const [error, setError] = React.useState({ type: "info", display: false, text: "" });
 
   const handlePhoneUpdate = e => {
     setPhone(e.target.value);
@@ -99,9 +101,9 @@ function Settings() {
   const handleTwoFAUpdate = async e => {
     setTwoFA(e.target.checked);
     if (!TFA) {
-      if (!user["phoneNumber"]) return console.error("Please update your phone number");
+      if (!user["phoneNumber"]) return setError({ type: "info", display: true, text: "Please provide a phone number" });
       const codeReceived = await getVerificationCode(user["phoneNumber"]);
-      if (!codeReceived) return console.error("Unable to send a verification code");
+      if (!codeReceived) return setError({ type: "error", display: true, text: "Unable to send a verification code" });
     } else {
       userSettings["twoFA"] = !TFA;
       settingContext.setUserSetting(prevState => {
@@ -122,7 +124,7 @@ function Settings() {
   };
 
   const submitPersonalChanges = () => {
-    if (!validatePhone()) return console.error("Invalid phone number");
+    if (!validatePhone()) return setError({ type: "error", display: true, text: "Invalid phone number provided." });
     updateContext.setUpdate(prevState => {
       return {
         ...prevState,
@@ -158,14 +160,13 @@ function Settings() {
       };
       setSubmittingChanges(true);
       const serverResponse = await httpAgent("PUT", `${process.env.REACT_APP_API}/api/v1/settings/${user._id}`, option);
-      const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
-        console.log(jsonResponse);
+        setError({ type: "success", display: true, text: "Your updates have been successfully synchronized." });
       } else {
-        console.log(jsonResponse);
+        setError({ type: "warning", display: true, text: "They was a problem. Please try again later." });
       }
     } catch (error) {
-      console.log(error);
+      setError({ type: "warning", display: true, text: "They was a problem. Please try again later." });
     }
     updateContext.setAnyUpdate(false);
     setSubmittingChanges(false);
@@ -185,7 +186,6 @@ function Settings() {
         return false;
       }
     } catch (error) {
-      console.log(error);
       return false;
     }
   };
@@ -232,6 +232,7 @@ function Settings() {
           </div>
         </Accordion>
       </div>
+      <Toast error={error} setError={setError} />
     </div>
   );
 }

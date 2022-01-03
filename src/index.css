@@ -14,6 +14,10 @@
   --color-bg-active: #f7f7ff;
   --color-online-status: #06d6a0;
   --color-busy-status: #ffd166;
+  --color-info: #17d7a0;
+  --color-error: #ff6d6d;
+  --color-warning: #ffab4c;
+  --color-success: #69dadb;
 }
 
 html {
