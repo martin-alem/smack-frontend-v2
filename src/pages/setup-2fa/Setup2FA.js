@@ -5,19 +5,21 @@ import Button from "./../../components/button/Button";
 import TextInput from "./../../components/text-input/TextInput";
 import image from "./../../images/2fa.svg";
 import httpAgent from "./../../utils/httpAgent";
+import Toast from "./../../components/toast/Toast";
 
 function Setup2FA() {
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
   const [code, setCode] = React.useState("");
   const [enablingTFA, setEnablingTFA] = React.useState(false);
+  const [error, setError] = React.useState({ type: "info", display: false, text: "" });
 
   const handleCodeChange = e => {
     setCode(e.target.value);
   };
 
   const enableTwoFA = async () => {
-    if (!validateCode(code)) return console.error("Please enter the code sent to you");
+    if (!validateCode(code)) return setError({ type: "error", display: true, text: "Please provide the code sent to your phone" });
     try {
       setEnablingTFA(true);
       const option = {
@@ -29,10 +31,12 @@ function Setup2FA() {
       if (serverResponse.ok) {
         await logoutUser();
       } else {
-        console.log(jsonResponse);
+        if (jsonResponse["code"] === "ECE") setError({ type: "error", display: true, text: "The verification code you provided as expired. Request for new one." });
+        if (jsonResponse["code"] === "EIC") setError({ type: "error", display: true, text: "You have provided and invalid verification. Check your code again" });
+        if (jsonResponse["code"] === "EIP") setError({ type: "error", display: true, text: "The phone number associated with this verification does not match our records" });
       }
     } catch (error) {
-      console.log(error);
+      setError({ type: "error", display: true, text: "An error occurred. Please try again later." });
     }
     setEnablingTFA(false);
   };
@@ -48,10 +52,10 @@ function Setup2FA() {
         localStorage.clear();
         window.location.replace("/");
       } else {
-        console.log(serverResponse);
+        setError({ type: "error", display: true, text: "An error occurred. Please try again later." });
       }
     } catch (error) {
-      console.log(error);
+      setError({ type: "error", display: true, text: "An error occurred. Please try again later." });
     }
   };
 
@@ -75,6 +79,7 @@ function Setup2FA() {
         <span className="material-icons icon">info</span>
         <p className="Setup2FA-info-text">Setting up two factor authentication helps to protect your account from malicious activities</p>
       </div>
+      <Toast error={error} setError={setError} />
     </div>
   );
 }

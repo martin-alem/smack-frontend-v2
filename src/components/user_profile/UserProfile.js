@@ -1,10 +1,13 @@
 import React from "react";
 import "./UserProfile.css";
-import Profile from "./../../images/user.jpg";
+import { UserContext } from "../../context/userContext";
 import httpAgent from "./../../utils/httpAgent";
 
 function UserProfile(props) {
   const contextMenu = React.useRef();
+  const userContext = React.useContext(UserContext);
+  const user = userContext.user;
+  const { picture: Profile } = user;
   const toggleContextMenu = () => {
     contextMenu.current.classList.toggle("hide");
   };
