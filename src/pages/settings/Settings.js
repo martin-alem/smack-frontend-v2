@@ -228,7 +228,7 @@ function Settings() {
         <Accordion name="personal-settings" title="Security" icon="security" type="security">
           <div className="Settings-security Settings-2fa">
             <p>Enable 2FA</p>
-            <ToggleSwitch name="2fa" type="2fa" state={TFA} action={handleTwoFAUpdate} />
+            {user.phoneNumber ? <ToggleSwitch name="2fa" type="2fa" state={TFA} action={handleTwoFAUpdate} /> : <p style={{ color: "#c92432" }}>provide phone number</p>}
           </div>
         </Accordion>
       </div>
