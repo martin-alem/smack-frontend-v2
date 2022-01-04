@@ -5,16 +5,18 @@ import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 
 function People(props) {
-  const { name, friends, image } = props;
+  const { person } = props;
   const modalContext = React.useContext(ModalContext);
   const { showProfile, setShowProfile } = modalContext;
   return (
     <div className="People">
       <div onClick={() => setShowProfile(!showProfile)} className="People-info">
-        <UserImage size="s" alt={name} src={image} showStatus={false} />
+        <UserImage size="s" alt={person.lastName} src={person.picture} showStatus={false} />
         <div className="People-details">
-          <h4>{name}</h4>
-          <p>{friends} mutual friends</p>
+          <h4>
+            {person.firstName} {person.lastName}
+          </h4>
+          <p>{0} mutual friends</p>
         </div>
       </div>
       <div className="People-add">
