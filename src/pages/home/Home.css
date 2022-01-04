@@ -27,6 +27,7 @@
 .Home-chats {
   grid-area: LNV;
   height: 100%;
+  z-index: 5;
 }
 
 .Home-chat-area {

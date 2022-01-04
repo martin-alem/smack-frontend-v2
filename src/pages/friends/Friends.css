@@ -8,6 +8,7 @@
 }
 
 .Friends-friends {
+  flex: 1;
   overflow-y: auto;
 }
 
