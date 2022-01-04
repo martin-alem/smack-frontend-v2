@@ -5,6 +5,7 @@ import { SettingContextProvider } from "./../../context/settingContext";
 import { UpdateContextProvider } from "./../../context/updateContext";
 import { FriendsContextProvider } from "./../../context/friendsContext";
 import { PeopleContextProvider } from "./../../context/peopleContext";
+import { NotificationContextProvider } from "./../../context/notificationContext";
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./../../components/protected_route/ProtectedRoute";
 import Login from "../../pages/login/Login";
@@ -21,14 +22,16 @@ function App() {
           <UserContextProvider>
             <FriendsContextProvider>
               <PeopleContextProvider>
-                <ModalContextProvider>
-                  <Switch>
-                    <Route path="/" exact component={Login} />
-                    <Route path="/setup_2fa" exact component={Setup2FA} />
-                    <ProtectedRoute path="/home" exact component={Home} />
-                    <Route component={NotFound} />
-                  </Switch>
-                </ModalContextProvider>
+                <NotificationContextProvider>
+                  <ModalContextProvider>
+                    <Switch>
+                      <Route path="/" exact component={Login} />
+                      <Route path="/setup_2fa" exact component={Setup2FA} />
+                      <ProtectedRoute path="/home" exact component={Home} />
+                      <Route component={NotFound} />
+                    </Switch>
+                  </ModalContextProvider>
+                </NotificationContextProvider>
               </PeopleContextProvider>
             </FriendsContextProvider>
           </UserContextProvider>
