@@ -59,9 +59,11 @@ function Notifications() {
       threshold: 1.0,
     };
     const notificationList = document.querySelectorAll(".Notification");
-    const target = notificationList[notificationList.length - 1];
-    const interSectionObserver = new IntersectionObserver(callback, options);
-    interSectionObserver.observe(target);
+    if (notificationList.length > 0) {
+      const target = notificationList[notificationList.length - 1];
+      const interSectionObserver = new IntersectionObserver(callback, options);
+      interSectionObserver.observe(target);
+    }
   };
 
   React.useEffect(() => {

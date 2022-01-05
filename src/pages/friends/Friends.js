@@ -63,9 +63,11 @@ function Friends(props) {
       threshold: 1.0,
     };
     const friendList = document.querySelectorAll(".Friend");
-    const target = friendList[friendList.length - 1];
-    const interSectionObserver = new IntersectionObserver(callback, options);
-    interSectionObserver.observe(target);
+    if (friendList.length > 0) {
+      const target = friendList[friendList.length - 1];
+      const interSectionObserver = new IntersectionObserver(callback, options);
+      interSectionObserver.observe(target);
+    }
   };
 
   React.useEffect(() => {
@@ -87,7 +89,9 @@ function Friends(props) {
       </div>
       <div ref={rootRef} className="Friends-friends">
         {friends.map(friend => {
-          return <Friend key={friend._id} friend={friend} showChatArea={showChatArea} />;
+          if (friend.status === "active") {
+            return <Friend key={friend._id} friend={friend} showChatArea={showChatArea} />;
+          }
         })}
       </div>
     </div>

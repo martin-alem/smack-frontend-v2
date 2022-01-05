@@ -62,9 +62,11 @@ function FindFriend() {
       threshold: 1.0,
     };
     const peopleList = document.querySelectorAll(".People");
-    const target = peopleList[peopleList.length - 1];
-    const interSectionObserver = new IntersectionObserver(callback, options);
-    interSectionObserver.observe(target);
+    if (peopleList.length > 0) {
+      const target = peopleList[peopleList.length - 1];
+      const interSectionObserver = new IntersectionObserver(callback, options);
+      interSectionObserver.observe(target);
+    }
   };
 
   React.useEffect(() => {
