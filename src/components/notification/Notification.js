@@ -1,10 +1,15 @@
 import React from "react";
 import "./Notification.css";
+import { UserContext } from "../../context/userContext";
 import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
+import httpAgent from "./../../utils/httpAgent";
 
 function Notification(props) {
-  const { senderId, firstName, lastName, picture, recipientId, body, read, notificationType, date } = props.notification;
+  const userContext = React.useContext(UserContext);
+  const user = userContext.user;
+  const { _id, senderId, firstName, lastName, picture, recipientId, body, read, notificationType, date } = props.notification;
+  const [readStatus, setReadStatus] = React.useState(read);
 
   const determineHeading = type => {
     switch (type) {
@@ -35,8 +40,29 @@ function Notification(props) {
         return ["people", "success"];
     }
   };
+
+  const updateNotification = async () => {
+    try {
+      const option = {
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ id: _id, read: true }),
+      };
+      const serverResponse = await httpAgent("PUT", `${process.env.REACT_APP_API}/api/v1/notification/${user._id}`, option);
+      if (serverResponse.ok) {
+        setReadStatus(true);
+      } else {
+        console.log(serverResponse);
+      }
+    } catch (error) {}
+  };
+
+  const updateReadStatus = async () => {
+    if (!read) {
+      await updateNotification();
+    }
+  };
   return (
-    <div className="Notification">
+    <div onClick={updateReadStatus} className="Notification">
       <div className="Notification-sender">
         <div className="Notification-info">
           <UserImage size="m" alt={lastName} src={picture} showStatus={false} />
@@ -61,7 +87,7 @@ function Notification(props) {
       ) : null}
       <div className="Notification-time">
         <p>{date}</p>
-        {!read ? <div className="Notification-read"></div> : null}
+        {!readStatus ? <div className="Notification-read"></div> : null}
       </div>
     </div>
   );
