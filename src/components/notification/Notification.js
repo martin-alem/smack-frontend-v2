@@ -11,6 +11,7 @@ function Notification(props) {
   const { _id, senderId, firstName, lastName, picture, recipientId, body, read, notificationType, date } = props.notification;
   const [readStatus, setReadStatus] = React.useState(read);
   const [accepting, setAccepting] = React.useState(false);
+  const [rejecting, setRejecting] = React.useState(false);
   const [response, setResponse] = React.useState("");
 
   const determineHeading = type => {
@@ -100,6 +101,42 @@ function Notification(props) {
     }
     setAccepting(false);
   };
+
+  const rejectRequest = async () => {
+    try {
+      setRejecting(true);
+      const notificationMessage = `${user.firstName} ${user.lastName} rejected your friend request.you are not mutual friends with ${user.firstName} at the moment`;
+      const option = {
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: recipientId,
+          friendId: senderId,
+          notification: {
+            senderId: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            picture: user.picture,
+            recipientId: senderId,
+            read: false,
+            body: notificationMessage,
+            notificationType: "request_rejected",
+            date: new Date(),
+          },
+        }),
+      };
+
+      const serverResponse = await httpAgent("POST", `${process.env.REACT_APP_API}/api/v1/friend_request/reject`, option);
+      const jsonResponse = await serverResponse.json();
+      if (serverResponse.ok) {
+        setResponse("reject");
+      } else {
+        console.log(jsonResponse);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setRejecting(false);
+  };
   return (
     <div onClick={updateReadStatus} className="Notification">
       <div className="Notification-sender">
@@ -127,7 +164,7 @@ function Notification(props) {
           ) : (
             <>
               <Button variant="primary" size="small" icon="person_add" text="Accept Request" action={acceptRequest} loading={accepting} />
-              <Button variant="secondary" size="small" icon="person_remove" text="Reject Request" />
+              <Button variant="secondary" size="small" icon="person_remove" text="Reject Request" action={rejectRequest} loading={rejecting} />
             </>
           )}
         </div>
