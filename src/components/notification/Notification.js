@@ -10,6 +10,8 @@ function Notification(props) {
   const user = userContext.user;
   const { _id, senderId, firstName, lastName, picture, recipientId, body, read, notificationType, date } = props.notification;
   const [readStatus, setReadStatus] = React.useState(read);
+  const [accepting, setAccepting] = React.useState(false);
+  const [response, setResponse] = React.useState("");
 
   const determineHeading = type => {
     switch (type) {
@@ -61,6 +63,43 @@ function Notification(props) {
       await updateNotification();
     }
   };
+
+  const acceptRequest = async () => {
+    try {
+      setAccepting(true);
+      const notificationMessage = `${user.firstName} ${user.lastName} accepted your friend request. you are now mutual friends with ${user.firstName}.`;
+      const option = {
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: recipientId,
+          friendId: senderId,
+          updateInfo: { status: "active" },
+          notification: {
+            senderId: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            picture: user.picture,
+            recipientId: senderId,
+            read: false,
+            body: notificationMessage,
+            notificationType: "request_accepted",
+            date: new Date(),
+          },
+        }),
+      };
+
+      const serverResponse = await httpAgent("POST", `${process.env.REACT_APP_API}/api/v1/friend_request/accept`, option);
+      const jsonResponse = await serverResponse.json();
+      if (serverResponse.ok) {
+        setResponse("accept");
+      } else {
+        console.log(jsonResponse);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setAccepting(false);
+  };
   return (
     <div onClick={updateReadStatus} className="Notification">
       <div className="Notification-sender">
@@ -81,8 +120,16 @@ function Notification(props) {
       </div>
       {notificationType === "friend_request" ? (
         <div className="Notification-action">
-          <Button variant="primary" size="small" icon="person_add" text="Accept Request" />
-          <Button variant="secondary" size="small" icon="person_add" text="Reject Request" />
+          {response === "accept" ? (
+            <Button variant="tertiary" size="small" icon="done" text="Friend Request Accepted" />
+          ) : response === "reject" ? (
+            <Button variant="secondary" size="small" icon="close" text="Friend Request Rejected" />
+          ) : (
+            <>
+              <Button variant="primary" size="small" icon="person_add" text="Accept Request" action={acceptRequest} loading={accepting} />
+              <Button variant="secondary" size="small" icon="person_remove" text="Reject Request" />
+            </>
+          )}
         </div>
       ) : null}
       <div className="Notification-time">
