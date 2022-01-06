@@ -8,7 +8,8 @@ import httpAgent from "./../../utils/httpAgent";
 function Notification(props) {
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
-  const { _id, senderId, firstName, lastName, picture, recipientId, body, read, notificationType, date } = props.notification;
+  const { _id, senderId, recipientId, body, read, notificationType, date } = props.notification;
+  const { firstName, lastName, picture } = senderId;
   const [readStatus, setReadStatus] = React.useState(read);
   const [accepting, setAccepting] = React.useState(false);
   const [rejecting, setRejecting] = React.useState(false);
@@ -77,10 +78,7 @@ function Notification(props) {
           updateInfo: { status: "active" },
           notification: {
             senderId: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            picture: user.picture,
-            recipientId: senderId,
+            recipientId: senderId._id,
             read: false,
             body: notificationMessage,
             notificationType: "request_accepted",
@@ -113,9 +111,6 @@ function Notification(props) {
           friendId: senderId,
           notification: {
             senderId: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            picture: user.picture,
             recipientId: senderId,
             read: false,
             body: notificationMessage,

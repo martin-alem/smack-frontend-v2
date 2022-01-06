@@ -8,6 +8,7 @@ function Friend(props) {
   const modalContext = React.useContext(ModalContext);
   const { showProfile, setShowProfile } = modalContext;
   const { friend, showChatArea } = props;
+  const { firstName, lastName, picture } = friend.friendId;
   const contents = [
     { text: "Profile", icon: "person", action: () => setShowProfile(!showProfile) },
     { text: "chat", icon: "chat", action: showChatArea },
@@ -18,10 +19,10 @@ function Friend(props) {
   return (
     <div className="Friend">
       <div onClick={showChatArea} className="Friend-info">
-        <UserImage size="s" alt={friend.lastName} src={friend.picture} showStatus={true} status="online" />
+        <UserImage size="s" alt={lastName} src={picture} showStatus={true} status="online" />
         <div className="Friend-details">
           <h4>
-            {friend.firstName} {friend.lastName}
+            {firstName} {lastName}
           </h4>
           <p>{0} mutual friends</p>
         </div>
