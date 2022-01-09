@@ -7,6 +7,8 @@ import { FriendsContextProvider } from "./../../context/friendsContext";
 import { PeopleContextProvider } from "./../../context/peopleContext";
 import { NotificationContextProvider } from "./../../context/notificationContext";
 import { ChatContextProvider } from "./../../context/chatContext";
+import { CurrentChatContextProvider } from "./../../context/currentChatContext";
+import { MessageContextProvider } from "./../../context/messageContext";
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./../../components/protected_route/ProtectedRoute";
 import Login from "../../pages/login/Login";
@@ -25,14 +27,18 @@ function App() {
               <PeopleContextProvider>
                 <NotificationContextProvider>
                   <ChatContextProvider>
-                    <ModalContextProvider>
-                      <Switch>
-                        <Route path="/" exact component={Login} />
-                        <Route path="/setup_2fa" exact component={Setup2FA} />
-                        <ProtectedRoute path="/home" exact component={Home} />
-                        <Route component={NotFound} />
-                      </Switch>
-                    </ModalContextProvider>
+                    <CurrentChatContextProvider>
+                      <MessageContextProvider>
+                        <ModalContextProvider>
+                          <Switch>
+                            <Route path="/" exact component={Login} />
+                            <Route path="/setup_2fa" exact component={Setup2FA} />
+                            <ProtectedRoute path="/home" exact component={Home} />
+                            <Route component={NotFound} />
+                          </Switch>
+                        </ModalContextProvider>
+                      </MessageContextProvider>
+                    </CurrentChatContextProvider>
                   </ChatContextProvider>
                 </NotificationContextProvider>
               </PeopleContextProvider>

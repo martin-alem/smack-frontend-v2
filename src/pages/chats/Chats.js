@@ -91,12 +91,18 @@ function Chats(props) {
         <OnlineFriends showChatArea={showChatArea} />
       </div>
 
-      <div className="Chats-heading2">Recent</div>
-      <div onClick={showChatArea} className="Chats-recent">
-        {chats.map(chat => (
-          <Chat chat={chat} />
-        ))}
-      </div>
+      {chats.length ? (
+        <>
+          <div className="Chats-heading2">Recent</div>
+          <div onClick={showChatArea} className="Chats-recent">
+            {chats.map(chat => (
+              <Chat chat={chat} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="Chats-no-chats">No recent chats found</div>
+      )}
     </div>
   );
 }
