@@ -6,11 +6,21 @@ import More from "./../../components/more/More";
 
 function Friend(props) {
   const modalContext = React.useContext(ModalContext);
-  const { showProfile, setShowProfile } = modalContext;
+  const { showProfile, setShowProfile, setCurrentProfile } = modalContext;
   const { friend, showChatArea } = props;
-  const { firstName, lastName, picture } = friend.friendId;
+  const { firstName, lastName, picture, email } = friend.friendId;
+
+  const showUserProfile = () => {
+    setCurrentProfile({
+      firstName,
+      lastName,
+      picture,
+      email,
+    });
+    setShowProfile(!showProfile);
+  };
   const contents = [
-    { text: "Profile", icon: "person", action: () => setShowProfile(!showProfile) },
+    { text: "Profile", icon: "person", action: () => showUserProfile() },
     { text: "chat", icon: "chat", action: showChatArea },
     { text: "Block", icon: "block", action: () => console.log("Block user") },
     { text: "Remove", icon: "person_remove", action: () => console.log("Remove user") },

@@ -3,7 +3,7 @@ import "./Chat.css";
 import UserImage from "./../../components/user_image/UserImage";
 
 function Chat(props) {
-  const { Image, name, lastMessage, time, unread, status } = props;
+  const { Image, name, lastMessage, time, unread, status } = props.chat;
 
   return (
     <div className="Chat">

@@ -11,7 +11,7 @@ function People(props) {
   const modalContext = React.useContext(ModalContext);
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
-  const { showProfile, setShowProfile } = modalContext;
+  const { showProfile, setShowProfile, setCurrentProfile } = modalContext;
   const [status, setStatus] = React.useState("inactive");
   const [checkingStatus, setCheckingStatus] = React.useState(true);
 
@@ -79,6 +79,16 @@ function People(props) {
     }
   };
 
+  const showUserProfile = () => {
+    setCurrentProfile({
+      firstName: person.firstName,
+      lastName: person.lastName,
+      picture: person.picture,
+      email: person.email,
+    });
+    setShowProfile(!showProfile);
+  };
+
   React.useEffect(() => {
     const fetchAsync = async () => {
       await getFriendStatus();
@@ -87,7 +97,7 @@ function People(props) {
   }, []);
   return (
     <div className="People">
-      <div onClick={() => setShowProfile(!showProfile)} className="People-info">
+      <div onClick={() => showUserProfile()} className="People-info">
         <UserImage size="s" alt={person.lastName} src={person.picture} showStatus={false} />
         <div className="People-details">
           <h4>
