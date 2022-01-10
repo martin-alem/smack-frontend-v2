@@ -9,6 +9,7 @@ import { NotificationContextProvider } from "./../../context/notificationContext
 import { ChatContextProvider } from "./../../context/chatContext";
 import { CurrentChatContextProvider } from "./../../context/currentChatContext";
 import { MessageContextProvider } from "./../../context/messageContext";
+import { SocketContextProvider } from "../../context/socketContext";
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./../../components/protected_route/ProtectedRoute";
 import Login from "../../pages/login/Login";
@@ -33,7 +34,9 @@ function App() {
                           <Switch>
                             <Route path="/" exact component={Login} />
                             <Route path="/setup_2fa" exact component={Setup2FA} />
-                            <ProtectedRoute path="/home" exact component={Home} />
+                            <SocketContextProvider>
+                              <ProtectedRoute path="/home" exact component={Home} />
+                            </SocketContextProvider>
                             <Route component={NotFound} />
                           </Switch>
                         </ModalContextProvider>

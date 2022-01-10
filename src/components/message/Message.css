@@ -52,7 +52,7 @@
   color: var(--color-gray-text);
 }
 
-.Message-details > :last-child {
+.Message-details .Message-done{
   font-size: 2rem;
 }
 .Message-box p {

@@ -5,10 +5,8 @@ import Image from "./../../components/image/Image";
 import Media from "../../components/media/Media";
 
 function Message(props) {
-  const { message, owner } = props;
-  const contents = [
-    { text: "Delete", icon: "delete", action: () => console.log("Delete message") },
-  ];
+  const { message } = props;
+  const contents = [{ text: "Delete", icon: "delete", action: () => console.log("Delete message") }];
 
   const generateAttachment = attachment => {
     const { attachmentType, src, name, size } = attachment;
@@ -55,11 +53,11 @@ function Message(props) {
       </div>
       <div className="Message-more">
         <div className="Message-owner-image">
-          <Image src={owner.image} dimension="40px" alt={owner.name} />
+          <Image src={message.owner.picture} dimension="40px" alt={message.owner.lastName} />
         </div>
         <div className="Message-details">
-          <h3>{owner.name}</h3>
-          <span className="material-icons-outlined">done_all</span>
+          <h3>{`${message.owner.firstName} ${message.owner.lastName}`}</h3>
+          {message.type === "outgoing" ? <span className="material-icons-outlined Message-done">done_all</span> : null}
         </div>
       </div>
     </div>

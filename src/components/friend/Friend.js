@@ -10,8 +10,7 @@ function Friend(props) {
   const currentChatContext = React.useContext(CurrentChatContext);
   const { showProfile, setShowProfile, setCurrentProfile } = modalContext;
   const { friend, showChatArea } = props;
-  const { firstName, lastName, picture, email } = friend.friendId;
-
+  const { firstName, lastName, picture, email, _id } = friend.friendId;
   const showUserProfile = () => {
     setCurrentProfile({
       firstName,
@@ -23,13 +22,13 @@ function Friend(props) {
   };
 
   const handleShowChatArea = () => {
-    const newChat = { firstName, lastName, picture, email };
+    const newChat = { firstName, lastName, picture, email, _id };
     currentChatContext.setCurrentChat(prevState => {
       return { ...prevState, ...newChat };
     });
     showChatArea();
   };
-  
+
   const contents = [
     { text: "Profile", icon: "person", action: showUserProfile },
     { text: "chat", icon: "chat", action: handleShowChatArea },

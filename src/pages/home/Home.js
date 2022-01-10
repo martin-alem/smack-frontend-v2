@@ -3,6 +3,7 @@ import "./Home.css";
 import { ModalContext } from "./../../context/modalContext";
 import { SettingContext } from "../../context/settingContext";
 import { UserContext } from "../../context/userContext";
+import { SocketContext } from "../../context/socketContext";
 import Navigation from "./../../components/nav/Navigation";
 import Chats from "./../../pages/chats/Chats";
 import Profile from "./../../pages/profile/Profile";
@@ -16,6 +17,8 @@ import ShowProfile from "./../../components/show_profile/ShowProfile";
 import httpAgent from "./../../utils/httpAgent";
 
 function Home() {
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
   const modalContext = React.useContext(ModalContext);
   const settingContext = React.useContext(SettingContext);
   const userContext = React.useContext(UserContext);
@@ -43,6 +46,13 @@ function Home() {
       return <Chats showChatArea={showChatArea} />;
     }
   };
+
+  React.useEffect(() => {
+    const payload = {
+      userId: userContext.user._id,
+    };
+    socket.emit("join_room", payload);
+  }, []);
 
   React.useEffect(() => {
     const fetchSettings = async () => {
