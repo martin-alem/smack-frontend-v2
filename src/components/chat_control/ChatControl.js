@@ -1,11 +1,13 @@
 import React from "react";
 import "./ChatControl.css";
 import Picker from "emoji-picker-react";
+import { MessageContext } from "../../context/messageContext";
 import { CurrentChatContext } from "../../context/currentChatContext";
 import { UserContext } from "../../context/userContext";
 import { SocketContext } from "../../context/socketContext";
 
-function ChatControl(props) {
+function ChatControl() {
+  const messageContext = React.useContext(MessageContext);
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
   const socketContext = React.useContext(SocketContext);
@@ -44,17 +46,23 @@ function ChatControl(props) {
         type: "text",
       },
     };
-    socket.emit("message", payload);
-    setTextMessage("");
+    if (textMessage) {
+      socket.emit("message", payload);
+      setTextMessage("");
+    }
   };
 
   React.useEffect(() => {
     socket.on("incoming_message", data => {
-      console.log(data);
+      messageContext.setMessages(prevState => {
+        return [...prevState, data];
+      });
     });
 
     socket.on("send_response", data => {
-      console.log(data);
+      messageContext.setMessages(prevState => {
+        return [...prevState, data];
+      });
     });
 
     socket.on("send_error", data => {

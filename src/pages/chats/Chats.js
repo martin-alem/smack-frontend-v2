@@ -29,7 +29,6 @@ function Chats(props) {
       const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/chats/${userId}?limit=${limit}&offset=${offset}`, option);
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
-        console.log(jsonResponse);
         const chats = jsonResponse["payload"];
         chatContext.setChats(prevState => {
           return [...prevState, ...chats["result"]];
