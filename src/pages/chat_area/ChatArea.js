@@ -13,7 +13,7 @@ function ChatArea(props) {
   const currentChat = React.useContext(CurrentChatContext);
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
-  const limitRef = React.useRef(20);
+  const limitRef = React.useRef(30);
   const offsetRef = React.useRef(0);
   const rootRef = React.useRef();
 
@@ -28,9 +28,9 @@ function ChatArea(props) {
       const serverResponse = await httpAgent("GET", `${process.env.REACT_APP_API}/api/v1/messages/${userId}/${friendId}?limit=${limit}&offset=${offset}`, option);
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
-        console.log(jsonResponse);
         const messages = jsonResponse["payload"];
-        messageContext.setMessages(messages["result"]);
+        const reversed = messages["result"].reverse();
+        messageContext.setMessages(reversed);
         return messages["remaining"];
       } else {
         console.log(jsonResponse);

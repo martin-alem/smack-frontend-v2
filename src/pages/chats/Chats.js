@@ -94,8 +94,8 @@ function Chats(props) {
         <>
           <div className="Chats-heading2">Recent</div>
           <div onClick={showChatArea} className="Chats-recent">
-            {chats.map(chat => (
-              <Chat chat={chat} />
+            {chats.map((chat, index) => (
+              <Chat key={index} chat={chat} showChatArea={showChatArea} />
             ))}
           </div>
         </>
