@@ -3,6 +3,7 @@ import "./Chat.css";
 import UserImage from "./../../components/user_image/UserImage";
 import { UserContext } from "../../context/userContext";
 import { CurrentChatContext } from "../../context/currentChatContext";
+import { formatDate } from "../../utils/util";
 
 function Chat({ chat, showChatArea }) {
   console.log(showChatArea);
@@ -34,7 +35,7 @@ function Chat({ chat, showChatArea }) {
       </div>
 
       <div className="Chat-time-unread">
-        <p className="Chat-time">{date}</p>
+        <p className="Chat-time">{formatDate(date.toString())["time"]}</p>
         <p className="Chat-unread">{0}</p>
       </div>
     </div>

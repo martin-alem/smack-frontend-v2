@@ -24,15 +24,23 @@
 }
 
 .Chat-userName {
+  width: 20rem;
   font-size: 2rem;
   color: var(--color-secondary-text);
   text-transform: capitalize;
   margin-bottom: 0.7rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Chat-lastMessage {
+  width: 20rem;
   font-size: 1.5rem;
   color: var(--color-secondary-text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Chat-time-unread {

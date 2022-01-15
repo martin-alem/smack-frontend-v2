@@ -4,6 +4,7 @@ import { UserContext } from "../../context/userContext";
 import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 import httpAgent from "./../../utils/httpAgent";
+import { formatDate } from "../../utils/util";
 
 function Notification(props) {
   const userContext = React.useContext(UserContext);
@@ -165,7 +166,7 @@ function Notification(props) {
         </div>
       ) : null}
       <div className="Notification-time">
-        <p>{date}</p>
+        <p>{formatDate(date.toString())["date"]}</p>
         {!readStatus ? <div className="Notification-read"></div> : null}
       </div>
     </div>

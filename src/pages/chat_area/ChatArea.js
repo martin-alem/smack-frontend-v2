@@ -53,6 +53,10 @@ function ChatArea(props) {
   };
 
   React.useEffect(() => {
+    rootRef.current.scrollTo({ left: 0, top: rootRef.current.scrollHeight, behavior: "smooth" });
+  });
+
+  React.useEffect(() => {
     const userId = user._id;
     const friendId = currentChat.currentChat._id;
     const fetchAsync = async (userId, friendId) => {
@@ -68,7 +72,7 @@ function ChatArea(props) {
       <div className="ChatArea-nav">
         <ChatNav chatAreaRef={props.chatAreaRef} />
       </div>
-      <div className="ChatArea-messages">
+      <div ref={rootRef} className="ChatArea-messages">
         {messageContext.messages.length ? (
           <>
             {messageContext.messages.map((message, index) => {

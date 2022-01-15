@@ -3,6 +3,7 @@ import "./Message.css";
 import More from "./../../components/more/More";
 import Image from "./../../components/image/Image";
 import Media from "../../components/media/Media";
+import { formatDate } from "../../utils/util";
 
 function Message(props) {
   const { message } = props;
@@ -46,7 +47,7 @@ function Message(props) {
           </div>
           <h4 className="Message-time">
             <span className="material-icons-outlined">schedule</span>
-            <p>{message.time}</p>
+            <p>{formatDate(message.time.toString())["time"]}</p>
           </h4>
         </div>
         <More contents={contents} />
