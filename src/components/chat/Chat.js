@@ -6,7 +6,6 @@ import { CurrentChatContext } from "../../context/currentChatContext";
 import { formatDate } from "../../utils/util";
 
 function Chat({ chat, showChatArea }) {
-  console.log(showChatArea);
   const userContext = React.useContext(UserContext);
   const currentChatContext = React.useContext(CurrentChatContext);
   const user = userContext.user;

@@ -13,7 +13,7 @@ function ChatArea(props) {
   const currentChat = React.useContext(CurrentChatContext);
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
-  const limitRef = React.useRef(30);
+  const limitRef = React.useRef(20);
   const offsetRef = React.useRef(0);
   const rootRef = React.useRef();
 
@@ -29,8 +29,7 @@ function ChatArea(props) {
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
         const messages = jsonResponse["payload"];
-        const reversed = messages["result"].reverse();
-        messageContext.setMessages(reversed);
+        messageContext.setMessages(messages["result"].reverse());
         return messages["remaining"];
       } else {
         console.log(jsonResponse);
@@ -61,7 +60,7 @@ function ChatArea(props) {
     const friendId = currentChat.currentChat._id;
     const fetchAsync = async (userId, friendId) => {
       if (userId && friendId) {
-        fetchMessages(userId, friendId);
+        await fetchMessages(userId, friendId);
       }
     };
     fetchAsync(userId, friendId);
@@ -75,9 +74,9 @@ function ChatArea(props) {
       <div ref={rootRef} className="ChatArea-messages">
         {messageContext.messages.length ? (
           <>
-            {messageContext.messages.map((message, index) => {
+            {messageContext.messages.map(message => {
               const filteredMessage = createMessage(message);
-              return <Message message={filteredMessage} key={index} />;
+              return <Message message={filteredMessage} key={message._id} />;
             })}
           </>
         ) : null}
