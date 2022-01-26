@@ -1,12 +1,18 @@
 import React from "react";
 import "./ChatNav.css";
 import { CurrentChatContext } from "../../context/currentChatContext";
+import { UserContext } from "../../context/userContext";
+import { SocketContext } from "../../context/socketContext";
 import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
 
 function ChatNav(props) {
   const currentChatContext = React.useContext(CurrentChatContext);
   const currentChat = currentChatContext.currentChat;
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
+  const userContext = React.useContext(UserContext);
+  const user = userContext.user;
   const { chatAreaRef } = props;
 
   const contents = [
@@ -17,6 +23,18 @@ function ChatNav(props) {
 
   const hideChatArea = () => {
     chatAreaRef.current.removeAttribute("style");
+  };
+
+  const make_call = () => {
+    const payload = {
+      recipientId: currentChat._id,
+      callerId: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      picture: user.picture,
+    };
+    socket.emit("call", payload);
+    window.location.replace("/call_room");
   };
   return (
     <div className="ChatNav">
@@ -32,8 +50,9 @@ function ChatNav(props) {
             </div>
           </div>
           <div className="ChatNav-right">
-            <span className="material-icons-outlined">phone</span>
-            <span className="material-icons-outlined">videocam</span>
+            <span onClick={make_call} className="material-icons-outlined">
+              videocam
+            </span>
             <More contents={contents} />
           </div>
         </>

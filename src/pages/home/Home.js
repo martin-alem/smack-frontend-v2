@@ -17,10 +17,12 @@ import ShowProfile from "./../../components/show_profile/ShowProfile";
 import httpAgent from "./../../utils/httpAgent";
 
 function Home() {
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
   const modalContext = React.useContext(ModalContext);
   const settingContext = React.useContext(SettingContext);
   const userContext = React.useContext(UserContext);
-  const { answerCall, showProfile } = modalContext;
+  const { answerCall, setAnswerCall, showProfile, modalData, setModalData } = modalContext;
   const [currentPage, setPage] = React.useState("chats");
   const chatAreaRef = React.useRef();
   const showChatArea = () => {
@@ -44,6 +46,13 @@ function Home() {
       return <Chats showChatArea={showChatArea} />;
     }
   };
+
+  React.useEffect(() => {
+    socket.on("call", data => {
+      setModalData(data);
+      setAnswerCall(true);
+    });
+  }, []);
 
   React.useEffect(() => {
     const fetchSettings = async () => {
@@ -75,7 +84,7 @@ function Home() {
       <section ref={chatAreaRef} className="Home-chat-area">
         <ChatArea chatAreaRef={chatAreaRef} />
       </section>
-      <AnswerCall callType="mic" showClose={false} opened={answerCall} />
+      <AnswerCall showClose={false} opened={answerCall} caller={modalData} />
       <ShowProfile showClose={true} opened={showProfile} />
     </div>
   );

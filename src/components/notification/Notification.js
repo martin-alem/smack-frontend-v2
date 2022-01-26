@@ -1,6 +1,7 @@
 import React from "react";
 import "./Notification.css";
 import { UserContext } from "../../context/userContext";
+import { SocketContext } from "../../context/socketContext";
 import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 import httpAgent from "./../../utils/httpAgent";
@@ -8,6 +9,8 @@ import { formatDate } from "../../utils/util";
 
 function Notification(props) {
   const userContext = React.useContext(UserContext);
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
   const user = userContext.user;
   const { _id, senderId, recipientId, body, read, notificationType, date } = props.notification;
   const { firstName, lastName, picture } = senderId;
@@ -92,6 +95,13 @@ function Notification(props) {
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
         setResponse("accept");
+        const payload = {
+          recipient: {
+            userId: senderId._id,
+          },
+          message: jsonResponse,
+        };
+        socket.emit("notification", payload);
       } else {
         console.log(jsonResponse);
       }
@@ -125,6 +135,13 @@ function Notification(props) {
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
         setResponse("reject");
+        const payload = {
+          recipient: {
+            userId: senderId._id,
+          },
+          message: jsonResponse,
+        };
+        socket.emit("notification", payload);
       } else {
         console.log(jsonResponse);
       }

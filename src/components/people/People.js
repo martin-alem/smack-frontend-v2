@@ -2,6 +2,7 @@ import React from "react";
 import "./People.css";
 import { ModalContext } from "./../../context/modalContext";
 import { UserContext } from "../../context/userContext";
+import { SocketContext } from "../../context/socketContext";
 import UserImage from "./../../components/user_image/UserImage";
 import Button from "./../../components/button/Button";
 import httpAgent from "./../../utils/httpAgent";
@@ -10,6 +11,8 @@ function People(props) {
   const { person } = props;
   const modalContext = React.useContext(ModalContext);
   const userContext = React.useContext(UserContext);
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
   const user = userContext.user;
   const { showProfile, setShowProfile, setCurrentProfile } = modalContext;
   const [status, setStatus] = React.useState("inactive");
@@ -49,6 +52,13 @@ function People(props) {
       const jsonResponse = await serverResponse.json();
       if (serverResponse.ok) {
         setStatus("sent");
+        const payload = {
+          recipient: {
+            userId: person._id,
+          },
+          message: jsonResponse,
+        };
+        socket.emit("notification", payload);
       } else {
         console.log(jsonResponse);
         setStatus("inactive");

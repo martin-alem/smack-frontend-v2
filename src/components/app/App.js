@@ -16,6 +16,7 @@ import Login from "../../pages/login/Login";
 import Setup2FA from "../../pages/setup-2fa/Setup2FA";
 import NotFound from "../../pages/404/404";
 import Home from "../../pages/home/Home";
+import CallRoom from "../../pages/call_room/CallRoom";
 import "./App.css";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/setup_2fa" exact component={Setup2FA} />
                             <SocketContextProvider>
                               <ProtectedRoute path="/home" exact component={Home} />
+                              <ProtectedRoute path="/call_room" exact component={CallRoom} />
                             </SocketContextProvider>
                             <Route component={NotFound} />
                           </Switch>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Notifications.css";
 import { NotificationContext } from "./../../context/notificationContext";
+import { SocketContext } from "../../context/socketContext";
 import { UserContext } from "../../context/userContext";
 import Notification from "./../../components/notification/Notification";
 import httpAgent from "../../utils/httpAgent";
@@ -9,10 +10,13 @@ function Notifications() {
   const notificationContext = React.useContext(NotificationContext);
   const userContext = React.useContext(UserContext);
   const notifications = notificationContext.notification;
+  const socketContext = React.useContext(SocketContext);
+  const socket = socketContext.socket;
   const user = userContext.user;
-  const limitRef = React.useRef(20);
+  const limitRef = React.useRef(50);
   const offsetRef = React.useRef(0);
   const rootRef = React.useRef();
+  const [newNotification, setNewNotification] = React.useState(false);
 
   const fetchNotification = async () => {
     try {
@@ -40,43 +44,21 @@ function Notifications() {
     return 0;
   };
 
-  const callback = async (entries, observer) => {
-    if (entries[0].isIntersecting) {
-      observer.unobserve(entries[0].target);
-      const result = await fetchNotification();
-      if (result > 0) {
-        const notificationList = document.querySelectorAll(".Notification");
-        const target = notificationList[notificationList.length - 1];
-        observer.observe(target);
-        offsetRef.current += 20;
-      }
-    }
-  };
-
-  const infiniteScroll = () => {
-    const options = {
-      root: rootRef.current,
-      threshold: 1.0,
-    };
-    const notificationList = document.querySelectorAll(".Notification");
-    if (notificationList.length > 0) {
-      const target = notificationList[notificationList.length - 1];
-      const interSectionObserver = new IntersectionObserver(callback, options);
-      interSectionObserver.observe(target);
-    }
-  };
+  React.useEffect(() => {
+    socket.on("notification", () => {
+      setNewNotification(!newNotification);
+    });
+  }, []);
 
   React.useEffect(() => {
     const fetchAsync = async () => {
       await fetchNotification();
-      infiniteScroll();
-      offsetRef.current += 20;
     };
     fetchAsync();
     return () => {
       notificationContext.setNotification([]);
     };
-  }, []);
+  }, [newNotification]);
   return (
     <div className="Notifications">
       <div className="Notifications-heading">Notifications</div>

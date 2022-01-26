@@ -1,0 +1,69 @@
+.CallRoom {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.CallRoom-call-area {
+  width: 40%;
+  height: 100%;
+  position: relative;
+}
+
+#localVideo {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 40%;
+  height: 30%;
+  z-index: 10;
+}
+
+#remoteVideo {
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+
+.CallRoom-end {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.CallRoom-end {
+  border: 1px solid var(--color-error);
+  background-color: var(--color-error);
+  transition: all 0.4s;
+}
+.CallRoom-end:hover {
+  filter: brightness(0.85);
+}
+
+.CallRoom button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 50%;
+  outline: none;
+}
+
+.CallRoom-end span {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 780px) {
+  .CallRoom-call-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
