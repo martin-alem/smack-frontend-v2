@@ -49,6 +49,7 @@ function Home() {
 
   React.useEffect(() => {
     socket.on("call", data => {
+      //check to make sure the user not currently in another call
       setModalData(data);
       setAnswerCall(true);
     });

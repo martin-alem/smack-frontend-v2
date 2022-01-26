@@ -10,7 +10,7 @@ function AnswerCall(props) {
   const socketContext = React.useContext(SocketContext);
   const socket = socketContext.socket;
   const modalContext = React.useContext(ModalContext);
-  const { setAnswerCall, modalData } = modalContext;
+  const { setAnswerCall, modalData} = modalContext;
 
   const acceptCall = () => {
     setAnswerCall(false);
@@ -20,7 +20,6 @@ function AnswerCall(props) {
       lastName: modalData.lastName,
       picture: modalData.picture,
     };
-
     socket.emit("answer_call", payload);
     window.location.replace("/call_room");
   };
