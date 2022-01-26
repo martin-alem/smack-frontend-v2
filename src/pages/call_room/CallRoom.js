@@ -15,7 +15,7 @@ function CallRoom(props) {
   const remoteVideo = React.useRef();
   const localStream = React.useRef();
   const peerConnection = React.useRef();
-
+  const peer = modalData.callerId === user._id ? modalData.recipientId : modalData.callerId;
   const openAndUseMediaDevices = async () => {
     try {
       const constraints = {
@@ -35,40 +35,6 @@ function CallRoom(props) {
     }
   };
 
-  const handleIceCandidateEvent = event => {
-    if (event.candidate) {
-      const peer = modalData.callerId === user._id ? modalData.recipientId : modalData.callerId;
-      const payload = {
-        peerId: peer,
-        candidate: event.candidate,
-      };
-      socket.emit("ice-candidate", payload);
-    }
-  };
-
-  const handleTrackEvent = event => {
-    try {
-      remoteVideo.current.srcObject = event.streams[0];
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleNegotiationNeededEvent = async () => {
-    try {
-      const offer = await peerConnection.current.createOffer();
-      await peerConnection.current.setLocalDescription(offer);
-      const peer = modalData.callerId === user._id ? modalData.recipientId : modalData.callerId;
-      const payload = {
-        peerId: peer,
-        sdp: peerConnection.current.localDescription,
-      };
-      socket.emit("sdp-offer", payload);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const createPeerConnection = () => {
     const peerConnection = new RTCPeerConnection({
       iceServers: [
@@ -83,19 +49,7 @@ function CallRoom(props) {
       ],
     });
 
-    peerConnection.onicecandidate = handleIceCandidateEvent;
-    peerConnection.ontrack = handleTrackEvent;
-    peerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
-
     return peerConnection;
-  };
-
-  const initializeCall = () => {
-    try {
-      peerConnection.current = createPeerConnection();
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const endCall = () => {
@@ -104,79 +58,153 @@ function CallRoom(props) {
         track.stop();
       }
     });
-    console.log(modalData);
-    const peer = modalData.callerId === user._id ? modalData.recipientId : modalData.callerId;
-    const payload = {
-      peerId: peer,
-    };
-    socket.emit("leave", payload);
+    localStorage.removeItem("call_data");
     props.history.replace("/home");
   };
 
-  const handleOffer = async offer => {
-    try {
-      peerConnection.current = createPeerConnection();
-      const desc = new RTCSessionDescription(offer.sdp);
-      await peerConnection.current.setRemoteDescription(desc);
-      const answer = await peerConnection.current.createAnswer();
-      await peerConnection.current.setLocalDescription(answer);
-      const peer = modalData.callerId === user._id ? modalData.recipientId : modalData.callerId;
-      const payload = {
-        peerId: peer,
-        sdp: peerConnection.current.localDescription,
-      };
-      socket.emit("sdp-answer", payload);
-    } catch (error) {
-      console.error(error);
-    }
+  const leaveCall = () => {
+    const payload = {
+      peerId: peer,
+    };
+    localStorage.removeItem("call_data");
+    socket.emit("leave", payload);
   };
 
-  const handleAnswer = async answer => {
-    try {
-      const desc = new RTCSessionDescription(answer.sdp);
-      await peerConnection.current.setRemoteDescription(desc);
-    } catch (error) {
-      console.error(error);
-    }
+  const makeCall = async () => {
+    peerConnection.current = createPeerConnection();
+    localStream.current.getTracks().forEach(track => {
+      peerConnection.current.addTrack(track, localStream.current);
+    });
+    const sdpOffer = await peerConnection.current.createOffer();
+    await peerConnection.current.setLocalDescription(sdpOffer);
+    const payload = {
+      peerId: peer,
+      sdp: sdpOffer,
+    };
+    socket.emit("sdp-offer", payload);
+    socket.on("sdp-answer", async ({ sdp }) => {
+      if (sdp) {
+        try {
+          await peerConnection.current.setRemoteDescription(new RTCSessionDescription(sdp));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+
+    //Listen for local ICE candidate
+    peerConnection.current.addEventListener("icecandidate", event => {
+      if (event.candidate) {
+        const payload = {
+          peerId: peer,
+          candidate: event.candidate,
+        };
+        socket.emit("ice-candidate", payload);
+      }
+    });
+    //Connection state
+    peerConnection.current.addEventListener("connectionstatechange", event => {
+      if (event.currentTarget.iceConnectionState === "connected") {
+        console.log("PEERS CONNECTED");
+      }
+    });
+
+    peerConnection.current.addEventListener("track", event => {
+      console.log("RECEIVING REMOTE STREAM");
+      try {
+        remoteVideo.current.srcObject = event.streams[0];
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    //Listen for remote ICE candidate
+    socket.on("ice-candidate", async ({ candidate }) => {
+      try {
+        await peerConnection.current.addIceCandidate(candidate);
+      } catch (error) {
+        console.log(error);
+      }
+    });
   };
 
-  const handleIceCandidate = async candidate => {
-    try {
-      const iceCandidate = new RTCIceCandidate(candidate.candidate);
-      peerConnection.current.addIceCandidate(iceCandidate);
-    } catch (error) {
-      console.error(error);
-    }
+  const answerCall = () => {
+    socket.on("sdp-offer", async data => {
+      const { sdp } = data;
+      if (sdp) {
+        peerConnection.current = createPeerConnection();
+        localStream.current.getTracks().forEach(track => {
+          peerConnection.current.addTrack(track, localStream.current);
+        });
+        peerConnection.current.setRemoteDescription(new RTCSessionDescription(sdp));
+        const sdpAnswer = await peerConnection.current.createAnswer();
+        await peerConnection.current.setLocalDescription(sdpAnswer);
+        const payload = {
+          peerId: peer,
+          sdp: sdpAnswer,
+        };
+        socket.emit("sdp-answer", payload);
+
+        //Listen for connectivity information
+        peerConnection.current.addEventListener("icecandidate", event => {
+          if (event.candidate) {
+            const payload = {
+              peerId: peer,
+              candidate: event.candidate,
+            };
+            socket.emit("ice-candidate", payload);
+          }
+        });
+
+        //Connection state
+        peerConnection.current.addEventListener("connectionstatechange", event => {
+          if (event.currentTarget.iceConnectionState === "connected") {
+            console.log("PEERS CONNECTED");
+          }
+        });
+
+        peerConnection.current.addEventListener("track", event => {
+          console.log("RECEIVING REMOTE STREAM");
+          try {
+            remoteVideo.current.srcObject = event.streams[0];
+          } catch (error) {
+            console.error(error);
+          }
+        });
+
+        //Listen for remote ICE candidate
+        socket.on("ice-candidate", async ({ candidate }) => {
+          try {
+            await peerConnection.current.addIceCandidate(candidate);
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      }
+    });
   };
 
   React.useEffect(() => {
     const handleAsync = async () => {
       await openAndUseMediaDevices();
 
+      socket.on("leave", () => {
+        endCall();
+      });
+
       socket.on("answer_call", data => {
         setModalData(data);
-        initializeCall();
       });
 
-      socket.on("reject_call", data => {
-        props.history.replace("/home");
-      });
-
-      //listen for offers
-      socket.on("sdp-offer", handleOffer);
-
-      //listen for answers
-      socket.on("sdp-answer", handleAnswer);
-
-      //listen for ice-candidates
-      socket.on("ice-candidate", handleIceCandidate);
-
-      //listen for when other peer leaves
-      socket.on("leave", endCall);
+      if (user._id === modalData.callerId) {
+        answerCall();
+      } else {
+        makeCall();
+      }
     };
     handleAsync();
-    initializeCall(); // if the user is answering a call
     return () => {
+      leaveCall();
       endCall();
     };
   }, []);

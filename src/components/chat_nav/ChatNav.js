@@ -5,6 +5,7 @@ import { UserContext } from "../../context/userContext";
 import { SocketContext } from "../../context/socketContext";
 import UserImage from "./../../components/user_image/UserImage";
 import More from "./../../components/more/More";
+import { ModalContext } from "./../../context/modalContext";
 
 function ChatNav(props) {
   const currentChatContext = React.useContext(CurrentChatContext);
@@ -14,6 +15,8 @@ function ChatNav(props) {
   const userContext = React.useContext(UserContext);
   const user = userContext.user;
   const { chatAreaRef } = props;
+  const modalContext = React.useContext(ModalContext);
+  const { setModalData } = modalContext;
 
   const contents = [
     { text: "Archive", icon: "archive", action: () => console.log("Archive this chat") },
@@ -34,6 +37,7 @@ function ChatNav(props) {
       picture: user.picture,
     };
     socket.emit("call", payload);
+    setModalData(payload);
     window.location.replace("/call_room");
   };
   return (

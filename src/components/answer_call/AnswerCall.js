@@ -10,12 +10,13 @@ function AnswerCall(props) {
   const socketContext = React.useContext(SocketContext);
   const socket = socketContext.socket;
   const modalContext = React.useContext(ModalContext);
-  const { setAnswerCall, modalData} = modalContext;
+  const { setAnswerCall, modalData } = modalContext;
 
   const acceptCall = () => {
     setAnswerCall(false);
     const payload = {
-      userId: modalData.callerId,
+      recipientId: modalData.recipientId,
+      callerId: modalData.callerId,
       firstName: modalData.firstName,
       lastName: modalData.lastName,
       picture: modalData.picture,
